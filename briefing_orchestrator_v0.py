@@ -256,6 +256,9 @@ def save_and_commit(note: str, receipt: dict) -> str:
         "receipt_id": receipt["receipt_id"],
         "status": "COMMITTED",
     })
+    # A successful run IS a human interaction — keep the dead-man switch alive
+    # without requiring an extra --ping invocation.
+    log["last_human_interaction"] = _utc_now_iso()
     _save_log(log)
 
     return str(note_path)
