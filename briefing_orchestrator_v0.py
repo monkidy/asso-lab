@@ -22,6 +22,12 @@ except ImportError:
     sys.stderr.write("ERROR: Python 3.9+ required (zoneinfo).\n")
     sys.exit(1)
 
+# Load .env from the script's directory if present. python-dotenv is a hard
+# dep listed in requirements.txt — fail-loud if missing rather than silently
+# falling back to bare os.environ.
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).parent / ".env")
+
 # =============================================================================
 # IMMUTABLE CONSTANTS
 # =============================================================================
@@ -30,7 +36,7 @@ PUBLISH_WINDOW_START_CET = 7        # IMMUTABLE
 PUBLISH_WINDOW_END_CET = 19         # IMMUTABLE
 MIN_SOURCES_REQUIRED = 3            # IMMUTABLE
 DEAD_MAN_SWITCH_HOURS = 24          # IMMUTABLE
-MODEL = "deepseek-chat"             # IMMUTABLE
+MODEL = "gemini-2.5-flash"
 OPERATOR = "hichem"                 # IMMUTABLE
 
 # =============================================================================
@@ -46,11 +52,11 @@ LOG_FILE = LOGS_DIR / ".orchestrator_log.json"
 # SOURCES (à remplir par Hichem — minimum MIN_SOURCES_REQUIRED)
 # =============================================================================
 SOURCES = [
-    # "https://...",  # SOURCE_1
-    # "https://...",  # SOURCE_2
-    # "https://...",  # SOURCE_3
-    # "https://...",  # SOURCE_4
-    # "https://...",  # SOURCE_5
+    "https://simonwillison.net/atom/everything/",
+    "https://www.lesswrong.com/feed.xml",
+    "https://alignmentforum.org/feed.xml",
+    "https://arxiv.org/rss/cs.MA",
+    "https://www.anthropic.com/news",
 ]
 
 # =============================================================================
@@ -173,25 +179,32 @@ def sanitize(text: str) -> str:
 # LLM + RECEIPT
 # =============================================================================
 def generate_note(sources_data: list) -> str:
-    api_key = os.environ.get("DEEPSEEK_API_KEY")
+    api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        sys.stderr.write("ERROR: DEEPSEEK_API_KEY not set\n")
+        sys.stderr.write("ERROR: GEMINI_API_KEY not set\n")
         sys.exit(1)
 
     from openai import OpenAI  # lazy
 
-    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
+    client = OpenAI(
+        api_key=api_key,
+        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+    )
     payload = "\n\n---\n\n".join(
         f"SOURCE: {s['url']}\n\n{sanitize(s['content'][:8000])}"
         for s in sources_data
     )
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": payload},
-        ],
-    )
+    try:
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": payload},
+            ],
+        )
+    except Exception as e:
+        sys.stderr.write(f"[ERROR] LLM API call failed: {e}\n")
+        _exit("API_ERROR")
     return response.choices[0].message.content
 
 
