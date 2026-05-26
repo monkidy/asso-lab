@@ -13,7 +13,7 @@ import re
 import subprocess
 import sys
 import uuid
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 try:
@@ -93,8 +93,12 @@ def _save_log(log: dict) -> None:
         json.dump(log, f, indent=2, ensure_ascii=False)
 
 
+def _utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
 def _utc_now_iso() -> str:
-    return datetime.utcnow().isoformat() + "Z"
+    return _utc_now().isoformat().replace("+00:00", "Z")
 
 
 # =============================================================================
@@ -107,7 +111,7 @@ def within_publish_window() -> bool:
 
 def rate_limited() -> bool:
     log = _load_log()
-    today = datetime.utcnow().date().isoformat()
+    today = _utc_now().date().isoformat()
     count = sum(
         1 for e in log.get("entries", [])
         if e.get("status") == "COMMITTED" and e.get("date", "").startswith(today)
@@ -122,10 +126,10 @@ def dead_man_check() -> bool:
     if not last:
         return True
     try:
-        last_dt = datetime.fromisoformat(last.rstrip("Z"))
+        last_dt = datetime.fromisoformat(last.replace("Z", "+00:00"))
     except ValueError:
         return True
-    return (datetime.utcnow() - last_dt) > timedelta(hours=DEAD_MAN_SWITCH_HOURS)
+    return (_utc_now() - last_dt) > timedelta(hours=DEAD_MAN_SWITCH_HOURS)
 
 
 # =============================================================================
@@ -208,7 +212,7 @@ def build_receipt(note_content: str, sources_data: list) -> dict:
 # SAVE + COMMIT (no push)
 # =============================================================================
 def save_and_commit(note: str, receipt: dict) -> str:
-    today = datetime.utcnow().date().isoformat()
+    today = _utc_now().date().isoformat()
     PUBLICATIONS_DIR.mkdir(parents=True, exist_ok=True)
     RECEIPTS_DIR.mkdir(parents=True, exist_ok=True)
 
