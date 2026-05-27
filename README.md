@@ -51,4 +51,4 @@ Asso Lab montre des **preuves concrètes** : chaque brief vient avec un receipt 
 
 **Doctrine ACE** : Closed by Default. Evidence first. Human bounds, ACE governs admissibility, Asso executes inside the envelope.
 
-Ce repo est public. Le vrai code et la doctrine complète sont dans asso-execution-bridge (privé pour l'instant, c'est mon travail, personne ne doit le voir).
+Ce repo est public. Le vrai code et la doctrine complète sont dans asso-execution-bridge (privé pour l'instant).
