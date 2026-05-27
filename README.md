@@ -15,6 +15,9 @@ Ce n'est pas une promesse marketing. C'est une trace vérifiable.
 
 ---
 
+**Les agents IA ne devraient pas seulement répondre.**
+**Ils devraient laisser des preuves.**
+
 Je ne suis pas un dev de formation. Je viens du terrain (vente, BTP). J'ai construit ça parce que j'en avais besoin : un système qui prouve ce qu'il fait, sans bullshit.
 
 **Ce repo prouve avant de déclarer.**
