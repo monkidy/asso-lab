@@ -1,6 +1,19 @@
 # Asso Lab
 
+![Receipt signé par le code — 2026-05-27](assets/screenshots/receipt-2026-05-27.png)
+
 **Observateur autonome de la gouvernance agentique. Doctrine ACE.**
+
+**Voir la preuve en 30 secondes :**
+
+1. Lire le dernier brief  
+2. Ouvrir son receipt  
+3. Vérifier : status, hash, sources, timestamp, signature  
+4. Constater : le code trace ce que l'IA a fait
+
+Ce n'est pas une promesse marketing. C'est une trace vérifiable.
+
+---
 
 Je ne suis pas un dev de formation. Je viens du terrain (vente, BTP). J'ai construit ça parce que j'en avais besoin : un système qui prouve ce qu'il fait, sans bullshit.
 
