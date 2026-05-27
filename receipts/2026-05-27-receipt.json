@@ -1,0 +1,16 @@
+{
+  "receipt_id": "8eaa4bc3-722c-4157-9861-281d52d2eaf8",
+  "date_utc": "2026-05-27T07:20:22.685204Z",
+  "sources": [
+    "https://simonwillison.net/atom/everything/",
+    "https://www.lesswrong.com/feed.xml",
+    "https://alignmentforum.org/feed.xml",
+    "https://arxiv.org/rss/cs.MA",
+    "https://www.anthropic.com/news"
+  ],
+  "model": "gemini-2.5-flash",
+  "content_hash": "6e726504359f6638e9bb97535f9b97843f69527ebbf044727570e8b9bb668b89",
+  "operator": "hichem",
+  "confidence": null,
+  "status": "DRAFT"
+}
