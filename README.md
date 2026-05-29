@@ -18,7 +18,8 @@ Ce n'est pas une promesse marketing. C'est une trace vérifiable.
 **Les agents IA ne devraient pas seulement répondre.**
 **Ils devraient laisser des preuves.**
 
-Je ne suis pas un dev de formation. Je suis un homme de terrain. J'ai construit ça parce que j'en avais besoin. Un système qui prouve ce qu'il fait, sans bullshit.
+Je ne suis pas dev de formation. Je suis un homme de terrain. J'ai construit ACE car j'en avais besoin. 
+Un système qui prouve ce qu'il fait, sans bullshit.
 
 **Ce repo prouve avant de déclarer.**
 
