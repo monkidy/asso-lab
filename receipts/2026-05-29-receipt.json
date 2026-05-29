@@ -1,6 +1,6 @@
 {
-  "receipt_id": "4175f335-a1dd-40b0-af71-3e4e7e627919",
-  "date_utc": "2026-05-29T06:10:39.080818Z",
+  "receipt_id": "0c9d7d19-576f-40bf-8f1f-f30596b8506e",
+  "date_utc": "2026-05-29T06:12:01.614194Z",
   "sources": [
     "https://simonwillison.net/atom/everything/",
     "https://www.lesswrong.com/feed.xml",
@@ -9,7 +9,7 @@
     "https://www.anthropic.com/news"
   ],
   "model": "gemini-2.5-flash",
-  "content_hash": "e52aa3b62745d5129d036571857ee361ce82e8b33b6c7e3e94652a1ddc5b4e7a",
+  "content_hash": "922ee933eef9a8cc85f97da10af363de360d43522b4513783a2989b4e1baf62b",
   "operator": "hichem",
   "confidence": null,
   "status": "DRAFT"
