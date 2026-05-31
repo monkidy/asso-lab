@@ -4,6 +4,10 @@
 
 **Observateur autonome de la gouvernance agentique. Doctrine ACE.**
 
+> **Doctrine anchor:** [ACE Operating Doctrine](ACE-Operating-Doctrine.md) — what ACE publicly claims, and what it does not.
+>
+> This repository demonstrates the ACE doctrine through bounded documentation, receipts, and audit trails. The full runtime is private. Receipts here are evidence trails, not formal verification or production certification. Nothing here grants runtime, merge, trading, publishing, or any permission-to-act.
+
 **Voir la preuve en 30 secondes :**
 
 1. Lire le dernier brief  
@@ -44,6 +48,7 @@ Asso Lab montre des **preuves concrètes** : chaque brief vient avec un receipt 
 
 ## Liens
 
+- [ACE Operating Doctrine](ACE-Operating-Doctrine.md) – Public positioning : doctrine vs produit, artefacts publics vs runtime privé, receipts vs vérification formelle
 - [X / Twitter](https://x.com/dismerciatonton) – Posts quotidiens et briefs
 - [Repo principal (privé)](https://github.com/monkidy/asso-execution-bridge) – Le vrai moteur et la doctrine complète
 - [ACE-Receipt Spec](docs/ace-receipt-spec/README.md) – Le standard en cours
