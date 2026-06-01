@@ -1,0 +1,20 @@
+{
+  "entries": [
+    {
+      "date": "2026-05-28T05:44:23.813760Z",
+      "receipt_id": "140cb2fb-c1ed-4de7-98f7-34dc66081bb7",
+      "status": "COMMITTED"
+    },
+    {
+      "date": "2026-05-29T06:10:39.537710Z",
+      "receipt_id": "4175f335-a1dd-40b0-af71-3e4e7e627919",
+      "status": "COMMITTED"
+    },
+    {
+      "date": "2026-05-29T06:12:02.122648Z",
+      "receipt_id": "0c9d7d19-576f-40bf-8f1f-f30596b8506e",
+      "status": "COMMITTED"
+    }
+  ],
+  "last_human_interaction": "2026-05-29T06:12:02.122678Z"
+}
