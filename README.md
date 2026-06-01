@@ -65,3 +65,9 @@ This public repo does not grant runtime authority, merge authority, trading auth
 - [AI Ops SOP Pack](https://github.com/monkidy/ai-ops-sop-pack) — public SOPs for bounded handoffs and PR audit discipline
 
 **ACE doctrine:** Closed by Default. Evidence First. Human Bounds. Receipts over claims. ACE governs admissibility; Asso executes only inside an explicit envelope.
+
+## Action receipt examples
+
+Asso Lab also includes static [action receipt examples](examples/action-receipts/) showing how ACE represents bounded agent actions: allowed, refused, or requiring human review.
+
+These examples are not runtime proof. They show the public shape of bounded agent governance.
