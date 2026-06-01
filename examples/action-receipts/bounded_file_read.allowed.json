@@ -1,0 +1,35 @@
+{
+  "schema": "ace.action_receipt.v0",
+  "status": "allowed",
+  "decision": "allowed_read_only",
+  "agent": {
+    "id": "support-agent-v0",
+    "role": "customer_support_assistant"
+  },
+  "requested_action": {
+    "type": "file_read",
+    "target": "examples/data/customer_1427.csv",
+    "purpose": "summarize support context"
+  },
+  "boundary": {
+    "mode": "read_only",
+    "max_records": 100,
+    "writes_allowed": false,
+    "exports_allowed": false,
+    "expires_at": "2026-06-01T10:00:00Z"
+  },
+  "checks_run": [
+    "boundary_present",
+    "target_in_allowed_scope",
+    "write_permission_absent",
+    "record_limit_present",
+    "human_review_not_required_for_read_only"
+  ],
+  "refusals": [],
+  "human_review_required": false,
+  "evidence": {
+    "receipt_hash": "sha256:example-bounded-file-read",
+    "generated_at": "2026-06-01T08:20:00Z",
+    "note": "Static public example. Not runtime proof."
+  }
+}
