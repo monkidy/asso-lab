@@ -35,7 +35,7 @@ MAX_PUBLICATIONS_PER_DAY = 3        # IMMUTABLE
 PUBLISH_WINDOW_START_CET = 7        # IMMUTABLE
 PUBLISH_WINDOW_END_CET = 19         # IMMUTABLE
 MIN_SOURCES_REQUIRED = 3            # IMMUTABLE
-DEAD_MAN_SWITCH_HOURS = 24          # IMMUTABLE
+SILENCE_ALERT_HOURS = 24            # ALERTE seulement — ne bloque jamais (mode continu, #6)
 MODEL = "gemini-2.5-flash"
 OPERATOR = "hichem"                 # IMMUTABLE
 
@@ -47,6 +47,7 @@ PUBLICATIONS_DIR = ROOT / "publications"
 RECEIPTS_DIR = ROOT / "receipts"
 LOGS_DIR = ROOT / "logs"
 LOG_FILE = LOGS_DIR / ".orchestrator_log.json"
+STOP_FILE = ROOT / "STOP_LAB"       # arrêt explicite opérateur (commit ce fichier pour pauser)
 
 # =============================================================================
 # SOURCES (à remplir par Hichem — minimum MIN_SOURCES_REQUIRED)
@@ -118,27 +119,56 @@ def within_publish_window() -> bool:
     return PUBLISH_WINDOW_START_CET <= now_cet.hour < PUBLISH_WINDOW_END_CET
 
 
-def rate_limited() -> bool:
-    log = _load_log()
-    today = _utc_now().date().isoformat()
-    count = sum(
-        1 for e in log.get("entries", [])
-        if e.get("status") == "COMMITTED" and e.get("date", "").startswith(today)
+def _today_str() -> str:
+    return _utc_now().date().isoformat()
+
+
+def _today_receipt_path() -> Path:
+    return RECEIPTS_DIR / f"{_today_str()}-receipt.json"
+
+
+def _read_receipt_status(path):
+    """Return the receipt's status on disk, or None if absent/unreadable."""
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8")).get("status")
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def published_today_count() -> int:
+    """Count today's receipts whose status is PUBLISHED.
+
+    Publications are counted from the receipts on disk (the source of
+    truth), NOT from 'generation' log entries — generating a DRAFT is not
+    a publication. This fixes the double-COMMITTED miscount (two runs at
+    06:10 + 06:12 produced two COMMITTED entries for a single brief).
+    """
+    return sum(
+        1 for p in RECEIPTS_DIR.glob(f"{_today_str()}*-receipt.json")
+        if _read_receipt_status(p) == "PUBLISHED"
     )
-    return count >= MAX_PUBLICATIONS_PER_DAY
 
 
-def dead_man_check() -> bool:
-    """Returns True if dead man switch tripped (= pause execution)."""
-    log = _load_log()
-    last = log.get("last_human_interaction")
+def rate_limited() -> bool:
+    return published_today_count() >= MAX_PUBLICATIONS_PER_DAY
+
+
+def silence_hours():
+    """Heures depuis le dernier --ping humain explicite, ou None si jamais pingé.
+
+    #6 : le silence ne BLOQUE plus — il ne sert qu'à émettre une ALERTE.
+    Seul STOP_LAB (signal explicite de Hichem) arrête la publication.
+    """
+    last = _load_log().get("last_human_interaction")
     if not last:
-        return True
+        return None
     try:
         last_dt = datetime.fromisoformat(last.replace("Z", "+00:00"))
     except ValueError:
-        return True
-    return (_utc_now() - last_dt) > timedelta(hours=DEAD_MAN_SWITCH_HOURS)
+        return None
+    return (_utc_now() - last_dt).total_seconds() / 3600.0
 
 
 # =============================================================================
@@ -254,11 +284,12 @@ def save_and_commit(note: str, receipt: dict) -> str:
     log.setdefault("entries", []).append({
         "date": _utc_now_iso(),
         "receipt_id": receipt["receipt_id"],
-        "status": "COMMITTED",
+        "status": "GENERATED",
     })
-    # A successful run IS a human interaction — keep the dead-man switch alive
-    # without requiring an extra --ping invocation.
-    log["last_human_interaction"] = _utc_now_iso()
+    # NOTE: a successful run does NOT refresh last_human_interaction. The
+    # dead-man switch must track Hichem's explicit presence (--ping) ONLY.
+    # Otherwise the cloud cron keeps itself alive and the switch stops
+    # monitoring whether Hichem is actually there.
     _save_log(log)
 
     return str(note_path)
@@ -292,13 +323,34 @@ def main() -> None:
         ping()
         return
 
-    # Gate sequence — strict, fail-closed.
+    # Idempotency guard — at most one briefing per UTC day. If today's
+    # receipt already exists we do NOT regenerate (regeneration is what
+    # produced two COMMITTED entries for a single brief on the 06:10/06:12
+    # double-run). Exit 0 cleanly; the cloud workflow reads this as
+    # "nothing new to publish" and skips the push.
+    _today_status = _read_receipt_status(_today_receipt_path())
+    if _today_status == "PUBLISHED":
+        print("ALREADY_PUBLISHED_TODAY")
+        return
+    if _today_status is not None:
+        print(f"ALREADY_GENERATED_TODAY_{_today_status}")
+        return
+
+    # Arrêt explicite opérateur — la SEULE chose qui stoppe la publication (#6).
+    if STOP_FILE.exists():
+        _exit("STOP_LAB_PRESENT")
+
+    # Silence humain = ALERTE, jamais un blocage (mode continu choisi par Hichem, #6).
+    _sh = silence_hours()
+    if _sh is None or _sh > SILENCE_ALERT_HOURS:
+        _h = "jamais pingé" if _sh is None else f"{_sh:.0f}h sans ping"
+        sys.stderr.write(f"[ALERT] silence humain: {_h} — publication continue\n")
+
+    # Gate sequence — strict, fail-closed (le silence n'en fait PLUS partie).
     if not within_publish_window():
         _exit("OUTSIDE_WINDOW")
     if rate_limited():
         _exit("RATE_LIMIT_REACHED")
-    if dead_man_check():
-        _exit("DEAD_MAN_SWITCH_TRIGGERED")
     if len(SOURCES) < MIN_SOURCES_REQUIRED:
         _exit("INSUFFICIENT_SOURCES")
 
