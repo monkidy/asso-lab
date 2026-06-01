@@ -1,6 +1,10 @@
 .env
 __pycache__/
 *.pyc
-logs/
+logs/*
+# Keep the orchestrator log tracked: in the cloud it is the ONLY place the
+# dead-man timestamp (last_human_interaction) and the per-day generation
+# record persist between workflow runs.
+!logs/.orchestrator_log.json
 publications/*
 !publications/.gitkeep
