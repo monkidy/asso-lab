@@ -1,0 +1,39 @@
+{
+  "schema": "ace.action_receipt.v0",
+  "status": "refused",
+  "decision": "refused_forbidden_write",
+  "agent": {
+    "id": "support-agent-v0",
+    "role": "customer_support_assistant"
+  },
+  "requested_action": {
+    "type": "file_write",
+    "target": "examples/data/customer_1427.csv",
+    "purpose": "update customer record"
+  },
+  "boundary": {
+    "mode": "read_only",
+    "max_records": 100,
+    "writes_allowed": false,
+    "exports_allowed": false,
+    "expires_at": "2026-06-01T10:00:00Z"
+  },
+  "checks_run": [
+    "boundary_present",
+    "requested_action_detected",
+    "write_permission_checked",
+    "write_permission_absent"
+  ],
+  "refusals": [
+    {
+      "reason": "write_not_allowed_inside_read_only_boundary",
+      "required_next_step": "human_review_or_new_explicit_boundary"
+    }
+  ],
+  "human_review_required": true,
+  "evidence": {
+    "receipt_hash": "sha256:example-forbidden-write-refused",
+    "generated_at": "2026-06-01T08:21:00Z",
+    "note": "Static public example. Not runtime proof."
+  }
+}
