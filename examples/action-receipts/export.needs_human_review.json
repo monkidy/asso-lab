@@ -1,0 +1,40 @@
+{
+  "schema": "ace.action_receipt.v0",
+  "status": "needs_human_review",
+  "decision": "blocked_until_human_review",
+  "agent": {
+    "id": "support-agent-v0",
+    "role": "customer_support_assistant"
+  },
+  "requested_action": {
+    "type": "data_export",
+    "target": "examples/data/customer_1427.csv",
+    "purpose": "send customer context to external system"
+  },
+  "boundary": {
+    "mode": "read_only",
+    "max_records": 100,
+    "writes_allowed": false,
+    "exports_allowed": false,
+    "expires_at": "2026-06-01T10:00:00Z"
+  },
+  "checks_run": [
+    "boundary_present",
+    "export_requested",
+    "export_permission_checked",
+    "external_send_detected",
+    "human_review_required"
+  ],
+  "refusals": [
+    {
+      "reason": "export_not_allowed_without_explicit_human_approval",
+      "required_next_step": "operator_approval_or_scope_reduction"
+    }
+  ],
+  "human_review_required": true,
+  "evidence": {
+    "receipt_hash": "sha256:example-export-needs-human-review",
+    "generated_at": "2026-06-01T08:22:00Z",
+    "note": "Static public example. Not runtime proof."
+  }
+}
