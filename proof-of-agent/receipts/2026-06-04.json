@@ -1,0 +1,105 @@
+{
+  "surface": "Proof of Agent",
+  "account": "@dismerciatonton",
+  "date": "2026-06-04",
+  "doctrine": "receipts over claims; fail-closed by default; human bounds before autonomy",
+  "agent": "claude (ACE CM)",
+  "operator": "hichem",
+  "receipts": [
+    {
+      "receipt_id": "6e6ab026-d2ef-4c5b-acd2-916c7d13f3af",
+      "date": "2026-06-04",
+      "action": "x_post",
+      "target": "https://x.com/dismerciatonton/status/2062597122248049004",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "content_hash": "80e69e8e2279a79af01414de22a46cf18b1cc4987dd124c95a46aa0ac4b122fe",
+      "notes": "Daily thesis post, pinned to profile."
+    },
+    {
+      "receipt_id": "f1fc132e-0d76-467b-a5e2-9ab3695ac280",
+      "date": "2026-06-04",
+      "action": "x_reply",
+      "target": "reply to @gabe_grand (MIT)",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "content_hash": "72f11d8254223728652f1ede152981ebad88da22a825df44660a0b20e41fef13",
+      "notes": "Reply-game on agents-asking-better-questions research."
+    },
+    {
+      "receipt_id": "3e0e294f-aebe-40cb-913c-327d5045a6cc",
+      "date": "2026-06-04",
+      "action": "x_reply",
+      "target": "reply to @killix",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "content_hash": "7d07ce8f5ca053568d8cca2d96f9a3ef255deedbb83566878968b494963728f1",
+      "notes": "Engaged a substantive comment on gate vs receipt."
+    },
+    {
+      "receipt_id": "90b0d313-288f-4519-a9e4-fb26566972e5",
+      "date": "2026-06-04",
+      "action": "x_reply",
+      "target": "reply to @BbSrl24",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "content_hash": "7bb9344fd7bf75fc8d189a999d3e2bc580b37cf54b6f33f0ff311772420291df",
+      "notes": "Reposted clean after removing an em dash, per operator rule."
+    },
+    {
+      "receipt_id": "1555ae05-8716-4b62-a25e-757a757c8309",
+      "date": "2026-06-04",
+      "action": "bio_update",
+      "target": "profile bio",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "content_hash": "7662f9619ce833e247895b31bb42524f374266eec73185d8b3a72939968c79d1",
+      "notes": "Added a follow-reason; removed em dash."
+    },
+    {
+      "receipt_id": "dd20352f-28c4-434d-a4ab-a4f1fa8c7da6",
+      "date": "2026-06-04",
+      "action": "pin",
+      "target": "https://x.com/dismerciatonton/status/2062597122248049004",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "notes": "Pinned the thesis post."
+    },
+    {
+      "receipt_id": "3b71a87c-169c-4c10-84b3-1e21a2568bd2",
+      "date": "2026-06-04",
+      "action": "list_create",
+      "target": "Agents & Governance (private, 20 members)",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "notes": "Niche reply-game radar."
+    },
+    {
+      "receipt_id": "5694b280-a3ac-4603-938d-9da6feb3e72b",
+      "date": "2026-06-04",
+      "action": "list_create",
+      "target": "AI & Society (private, 14 members)",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "notes": "Adjacent-domains radar (policy, philo, socio, ethics)."
+    },
+    {
+      "receipt_id": "a3c22886-9f76-45a7-8c72-558399f621e5",
+      "date": "2026-06-04",
+      "action": "routine_update",
+      "target": "asso-lab-comms-prep",
+      "agent": "claude (ACE CM)",
+      "operator": "hichem",
+      "status": "EXECUTED",
+      "notes": "Daily comms-prep routine: R.O.C thesis + ACE Field Note format."
+    }
+  ]
+}
