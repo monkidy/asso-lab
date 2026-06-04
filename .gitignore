@@ -1,4 +1,6 @@
 .env
+.env.x
+secrets/
 __pycache__/
 *.pyc
 logs/*
