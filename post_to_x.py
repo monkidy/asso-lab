@@ -63,10 +63,13 @@ def _utc_now_iso() -> str:
 
 
 def _append_receipt(action: str, target: str, content: str, extra: dict = None) -> dict:
+    # ACE-Receipt v1 unifie + LIEN vers le brief du jour (chaine: brief -> post X).
+    import ace_receipt
     date = datetime.now(timezone.utc).date().isoformat()
     rec_dir = ROOT / "proof-of-agent" / "receipts"
     rec_dir.mkdir(parents=True, exist_ok=True)
     path = rec_dir / f"{date}.json"
+    parent_id, parent_date = ace_receipt.read_brief_parent(ROOT, date)
     if path.exists():
         doc = json.loads(path.read_text(encoding="utf-8"))
     else:
@@ -77,20 +80,23 @@ def _append_receipt(action: str, target: str, content: str, extra: dict = None) 
             "doctrine": "receipts over claims; fail-closed by default; human bounds before autonomy",
             "agent": "claude (ACE CM)",
             "operator": "hichem",
+            "brief_receipt_id": parent_id,
             "receipts": [],
         }
-    rec = {
-        "receipt_id": str(uuid.uuid4()),
-        "date_utc": _utc_now_iso(),
-        "action": action,
-        "target": target,
-        "content_hash": _sha_lf(content),
-        "agent": "claude (ACE CM) via post_to_x.py",
-        "operator": "hichem",
-        "status": "EXECUTED",
-    }
-    if extra:
-        rec.update(extra)
+    links = {"target": target, "parent_receipt_id": parent_id, "parent_date": parent_date}
+    if extra and extra.get("tweet_id"):
+        links["tweet_id"] = extra["tweet_id"]
+    rec = ace_receipt.build(
+        action_class=action,
+        surface="asso-lab",
+        actor="claude (ACE CM) via post_to_x.py",
+        operator="hichem",
+        status="EXECUTED",
+        content_hash=_sha_lf(content),
+        source_schema="asso-lab/post_to_x",
+        links=links,
+    )
+    doc.setdefault("brief_receipt_id", parent_id)
     doc.setdefault("receipts", []).append(rec)
     path.write_text(json.dumps(doc, indent=2, ensure_ascii=False), encoding="utf-8")
     return rec

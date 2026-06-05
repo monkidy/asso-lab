@@ -242,16 +242,20 @@ def generate_note(sources_data: list) -> str:
 
 
 def build_receipt(note_content: str, sources_data: list) -> dict:
-    return {
-        "receipt_id": str(uuid.uuid4()),
-        "date_utc": _utc_now_iso(),
-        "sources": [s["url"] for s in sources_data if s.get("content")],
-        "model": MODEL,
-        "content_hash": hashlib.sha256(note_content.encode("utf-8")).hexdigest(),
-        "operator": OPERATOR,
-        "confidence": None,
-        "status": "DRAFT",
-    }
+    # ACE-Receipt v1 unifie : le brief est le PARENT de la chaine editoriale du jour.
+    # Les posts X (post_to_x.py) referencent ce receipt via links.parent_receipt_id.
+    import ace_receipt
+    return ace_receipt.build(
+        action_class="brief_publish",
+        surface="asso-lab",
+        actor=MODEL,
+        operator=OPERATOR,
+        status="DRAFT",
+        content_hash=hashlib.sha256(note_content.encode("utf-8")).hexdigest(),
+        sources=[s["url"] for s in sources_data if s.get("content")],
+        confidence=None,
+        source_schema="asso-lab/briefing_orchestrator_v0",
+    )
 
 
 # =============================================================================
