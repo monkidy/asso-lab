@@ -296,6 +296,40 @@ def save_and_commit(note: str, receipt: dict) -> str:
 
 
 # =============================================================================
+# OPERATOR NOTIFICATION
+# =============================================================================
+def notify_operator(note_path: str) -> None:
+    """Send a Telegram push to Hichem when a DRAFT is ready for review.
+
+    Fail-soft: a notification failure never aborts a successful briefing run.
+    Credentials read from .env (TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID).
+    """
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if not token or not chat_id:
+        sys.stderr.write("[NOTIFY] Telegram non configure (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID absents).\n")
+        return
+    import requests as _req
+    today = _utc_now().date().isoformat()
+    text = (
+        f"ACE Brief {today} pret.\n"
+        f"DRAFT genere, review requis avant publication.\n"
+        f"Fichier : publications/{today}-briefing.md\n"
+        f"Receipts over claims."
+    )
+    try:
+        r = _req.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat_id, "text": text},
+            timeout=10,
+        )
+        r.raise_for_status()
+        sys.stderr.write(f"[NOTIFY] Telegram OK (chat {chat_id})\n")
+    except Exception as e:
+        sys.stderr.write(f"[NOTIFY] Telegram echec (non bloquant): {e}\n")
+
+
+# =============================================================================
 # CLI
 # =============================================================================
 def ping() -> None:
@@ -361,6 +395,7 @@ def main() -> None:
     note = generate_note(sources_data)
     receipt = build_receipt(note, sources_data)
     path = save_and_commit(note, receipt)
+    notify_operator(path)
     print(f"DONE — review avant push : {path}")
 
 
