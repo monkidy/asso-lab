@@ -1,0 +1,1 @@
+The "human in the loop" is dead. AI agents killed it. Traditional trust models fail as autonomous systems obscure code provenance. One major project stopped accepting public pull requests. Robust governance demands formalized interaction protocols. Receipts over claims.
