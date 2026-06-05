@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="170" viewBox="0 0 520 170" fill="none">
+  <rect width="520" height="170" fill="#FAFAF7"/>
+  <text x="36" y="98" font-family="'JetBrains Mono','IBM Plex Mono',ui-monospace,monospace" font-size="74" font-weight="700" letter-spacing="4">
+    <tspan fill="#1FA463">[</tspan><tspan fill="#111111"> ACE </tspan><tspan fill="#1FA463">]</tspan>
+  </text>
+  <text x="42" y="134" font-family="'JetBrains Mono','IBM Plex Mono',ui-monospace,monospace" font-size="17" letter-spacing="4" fill="#111111">BOUNDED EXECUTION FOR AI AGENTS</text>
+</svg>
