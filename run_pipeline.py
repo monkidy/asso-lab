@@ -5,7 +5,7 @@ Chaine complete en un seul lancement :
   1. briefing_orchestrator_v0.py  ->  brief DRAFT du jour
   2. generate_x_draft()           ->  X post (EN, 280 chars) via Gemini
   3. telegram_gate.py             ->  envoi du draft a Asso_CM, attente ok/non
-  4. post_to_x.py                 ->  publication + Proof of Agent receipt
+  4. affichage du texte final     ->  l'operateur poste manuellement depuis Telegram
 
 Usage:
   python run_pipeline.py                   # pipeline complet (lance par le scheduler)
@@ -199,8 +199,16 @@ def main() -> None:
     if rc != 0:
         sys.exit(rc)
 
-    # Etape 4 : post X ---------------------------------------------------
-    sys.exit(step_post(draft_path, args.dry_run))
+    # Etape 4 : post manuel ----------------------------------------------
+    # Le texte a ete envoye sur Telegram a l'etape 3.
+    # Copie-le depuis le message Telegram et poste-le manuellement sur X.
+    x_text = draft_path.read_text(encoding="utf-8").strip()
+    print("\n[PIPELINE] APPROUVE. Poste ce texte manuellement sur X :")
+    print(f"\n{'—' * 60}")
+    print(x_text)
+    print(f"{'—' * 60}")
+    print(f"\n[PIPELINE] {len(x_text)} caracteres | draft : {draft_path.name}")
+    print("[PIPELINE] Termine. Aucune publication automatique.")
 
 
 if __name__ == "__main__":
