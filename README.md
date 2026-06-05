@@ -63,6 +63,7 @@ This public repo does not grant runtime authority, merge authority, trading auth
 - [Publications](publications/) — published briefs
 - [Receipts](receipts/) — evidence trails
 - [AI Ops SOP Pack](https://github.com/monkidy/ai-ops-sop-pack) — public SOPs for bounded handoffs and PR audit discipline
+- [ACE Visual Charter V1](docs/brand/ACE_VISUAL_CHARTER_V1.md): canonical fleet visual doctrine (dual-mode, sober, proof-first)
 
 **ACE doctrine:** Closed by Default. Evidence First. Human Bounds. Receipts over claims. ACE governs admissibility; Asso executes only inside an explicit envelope.
 
