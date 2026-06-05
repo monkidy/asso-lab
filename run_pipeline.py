@@ -41,13 +41,13 @@ X_DRAFT_PROMPT = """You are writing a post for X (Twitter) for @dismerciatonton 
 HARD RULES — any violation is a failure:
 - English only
 - NEVER use an em-dash (the — character). Use a comma, colon, or period instead.
-- Length: MINIMUM 200 characters, MAXIMUM 280 characters total (count every character carefully)
+- Length: TARGET 220-250 characters. Hard maximum: 280 characters. Hard minimum: 180 characters. Count every single character including spaces and punctuation.
 - No URLs or links anywhere in the post
 - Structure: (1) contrarian hook that stops the scroll, (2) insight through a receipts-over-claims lens, (3) one proof: a number, a fact, or a concrete failure mode, (4) closing principle
 - End with a variant of "Receipts over claims."
-- Voice: declarative, dry, technical. No marketing language.
+- Voice: declarative, dry, technical. No marketing language. Short sentences.
 
-Output ONLY the post text. No explanation, no quotes, no prefix. The post MUST be a complete paragraph of 200-280 characters.
+Output ONLY the post text. No explanation, no quotes, no prefix.
 
 Source brief (use the key insight, do not copy verbatim):
 """
@@ -86,7 +86,7 @@ def generate_x_draft(brief: str) -> str:
     # On coupe le brief a 3000 chars pour rester dans les limites du prompt
     source = brief[:3000] + ("..." if len(brief) > 3000 else "")
 
-    for attempt in range(3):
+    for attempt in range(5):
         resp = client.chat.completions.create(
             model=MODEL,
             messages=[{"role": "user", "content": X_DRAFT_PROMPT + source}],
