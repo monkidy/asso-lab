@@ -83,7 +83,7 @@ neutral, not green.
 - Wordmark: `[ ACE ]`, brackets in verified-green, encoding "bounded execution" (`asso-lab/brand/wordmark.svg`).
 - Proof seal: stamped double ring with a green check, meaning "Proof of Agent"; use as signature mark and as a watermark on proof screenshots (`asso-lab/brand/proof-seal.svg`).
 - App monogram (dark surfaces): the geometric chevron-stack ACE mark (`asso-execution-bridge/assets/brand/ace_logo_mark_v0.svg`).
-- ACE expands to "Asso Control Environment", the operator surface. It is distinct from the AAS trading runtime; the mark is not a fintech or coin mark.
+- ACE expands to "Asso Capital Engine", the operator surface. It is distinct from the AAS trading runtime; the mark is not a fintech or coin mark.
 
 ## 7. Tone and claims
 
