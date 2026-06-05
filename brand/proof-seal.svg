@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="300" viewBox="0 0 260 300" fill="none">
+  <rect width="260" height="300" fill="#FAFAF7"/>
+  <circle cx="130" cy="118" r="92" fill="none" stroke="#111111" stroke-width="3"/>
+  <circle cx="130" cy="118" r="80" fill="none" stroke="#111111" stroke-width="8"/>
+  <path d="M90 120 L118 150 L172 82" fill="none" stroke="#1FA463" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="130" y="252" text-anchor="middle" font-family="'JetBrains Mono','IBM Plex Mono',ui-monospace,monospace" font-size="22" font-weight="700" letter-spacing="2" fill="#111111">PROOF OF AGENT</text>
+  <text x="130" y="278" text-anchor="middle" font-family="'JetBrains Mono','IBM Plex Mono',ui-monospace,monospace" font-size="12.5" letter-spacing="2" fill="#111111">RECEIPTS OVER CLAIMS</text>
+</svg>
