@@ -1,7 +1,7 @@
 # ACE — Setup Windows Task Scheduler
 # Lance python run_pipeline.py tous les jours de semaine a 13h00 CET.
 # Usage : .\setup_scheduler.ps1
-# Necessite d'etre lance en administrateur (ou avec les droits suffisants).
+# Pas besoin d'administrateur : -RunLevel Limited suffit pour l'utilisateur courant.
 
 $ErrorActionPreference = 'Stop'
 
@@ -40,7 +40,7 @@ Register-ScheduledTask `
     -Action $Action `
     -Trigger $Trigger `
     -Settings $Settings `
-    -RunLevel Highest `
+    -RunLevel Limited `
     -Description "ACE : brief + draft X + gate Telegram. Valide sur Asso_CM." | Out-Null
 
 Write-Host ""
