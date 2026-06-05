@@ -25,9 +25,11 @@ from pathlib import Path
 
 try:
     from dotenv import load_dotenv
-    load_dotenv(Path(__file__).parent / ".env")
+    _env = Path(__file__).parent / ".env"
+    if not load_dotenv(_env):       # essaie le chemin absolu du script
+        load_dotenv()               # fallback: CWD (utile si lance depuis ailleurs)
 except ImportError:
-    pass  # env vars peuvent venir d'ailleurs (session cloud)
+    pass  # env vars peuvent venir d'ailleurs (session cloud, $env: PowerShell)
 
 APPROVE = {"ok", "oui", "valide", "go", "yes", "1", "approve", "post"}
 REFUSE  = {"non", "no", "refuse", "annule", "stop", "0", "cancel", "nope"}

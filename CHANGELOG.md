@@ -4,6 +4,13 @@ Public, dated build log of Asso Lab and the ACE public surface. Newest first.
 Receipts over claims: every entry is dated, and this repository's git history is
 the tamper-evident record. For action-level proof, see `proof-of-agent/`.
 
+## v0.4 (2026-06-05)
+- Telegram validation gate (`telegram_gate.py`): drafts envoyes a Asso_CM bot, publication bloquee jusqu'a ok/non explicite de l'operateur.
+- Pipeline chaine (`run_pipeline.py`): orchestrateur + gate + post_to_x en un seul lancement.
+- CLAUDE.md : memoire de session persistante, source de verite pour tout nouveau run Claude Code.
+- Google Calendar : event quotidien 13h CET "ACE Brief : verifier + poster" (popup + email).
+- Fix dotenv : chargement .env robuste sur Windows (fallback CWD).
+
 ## v0.3 (2026-06-05)
 - Proof of Agent: public receipt surface live (`proof-of-agent/`), with a dated origination mark.
 - Canonical comms format: `docs/comms-field-note-format.md`, single source of truth for X and LinkedIn (ACE Field Note structure, R.O.C, no em dash).
