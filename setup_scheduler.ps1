@@ -41,7 +41,8 @@ Register-ScheduledTask `
     -Trigger $Trigger `
     -Settings $Settings `
     -RunLevel Limited `
-    -Description "ACE : brief + draft X + gate Telegram. Valide sur Asso_CM." | Out-Null
+    -Description "ACE : brief + draft X + gate Telegram. Valide sur Asso_CM." `
+    -ErrorAction Stop | Out-Null
 
 Write-Host ""
 Write-Host "Tache planifiee creee : '$TaskName'" -ForegroundColor Green
