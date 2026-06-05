@@ -41,13 +41,13 @@ X_DRAFT_PROMPT = """You are writing a post for X (Twitter) for @dismerciatonton 
 HARD RULES — any violation is a failure:
 - English only
 - NEVER use an em-dash (the — character). Use a comma, colon, or period instead.
-- Maximum 280 characters total (count carefully)
+- Length: MINIMUM 200 characters, MAXIMUM 280 characters total (count every character carefully)
 - No URLs or links anywhere in the post
 - Structure: (1) contrarian hook that stops the scroll, (2) insight through a receipts-over-claims lens, (3) one proof: a number, a fact, or a concrete failure mode, (4) closing principle
 - End with a variant of "Receipts over claims."
 - Voice: declarative, dry, technical. No marketing language.
 
-Output ONLY the post text. No explanation, no quotes, no prefix.
+Output ONLY the post text. No explanation, no quotes, no prefix. The post MUST be a complete paragraph of 200-280 characters.
 
 Source brief (use the key insight, do not copy verbatim):
 """
@@ -100,6 +100,9 @@ def generate_x_draft(brief: str) -> str:
             continue
         if len(text) > 280:
             sys.stderr.write(f"[PIPELINE] Tentative {attempt+1}: {len(text)} chars > 280, on regenere.\n")
+            continue
+        if len(text) < 100:
+            sys.stderr.write(f"[PIPELINE] Tentative {attempt+1}: draft trop court ({len(text)} chars), on regenere.\n")
             continue
 
         return text
