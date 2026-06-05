@@ -90,9 +90,12 @@ def generate_x_draft(brief: str) -> str:
         resp = client.chat.completions.create(
             model=MODEL,
             messages=[{"role": "user", "content": X_DRAFT_PROMPT + source}],
-            max_tokens=120,
+            # gemini-2.5-flash est un modele a raisonnement : un budget trop bas
+            # est englouti par le thinking avant que le post ne soit ecrit.
+            # On laisse large, la longueur reelle est bornee par les validations.
+            max_tokens=2048,
         )
-        text = resp.choices[0].message.content.strip().strip('"').strip("'")
+        text = (resp.choices[0].message.content or "").strip().strip('"').strip("'")
 
         # Validations
         if "—" in text or "―" in text:
