@@ -1,4 +1,4 @@
-# ACE — Setup Windows Task Scheduler
+# ACE: Setup Windows Task Scheduler
 # Lance python run_pipeline.py tous les jours de semaine a 13h00 CET.
 # Usage : .\setup_scheduler.ps1
 # Pas besoin d'administrateur : -RunLevel Limited suffit pour l'utilisateur courant.

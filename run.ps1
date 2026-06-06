@@ -1,4 +1,4 @@
-# Asso Lab — full briefing cycle in one command.
+# Asso Lab: full briefing cycle in one command.
 # Usage: .\run.ps1   (or  pwsh -File .\run.ps1)
 #
 #  1. Load .env into the current PowerShell session.
@@ -83,7 +83,7 @@ if ($LASTEXITCODE -ne 0) {
 git add $receiptPath
 if ($LASTEXITCODE -ne 0) { Write-Host "git add failed" -ForegroundColor Red; exit 1 }
 
-git commit -m "Receipt $today — PUBLISHED"
+git commit -m "Receipt $today: PUBLISHED"
 if ($LASTEXITCODE -ne 0) { Write-Host "git commit failed" -ForegroundColor Red; exit 1 }
 
 Write-Host "Receipt committe localement." -ForegroundColor Green
