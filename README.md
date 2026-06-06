@@ -59,7 +59,7 @@ This public repo does not grant runtime authority, merge authority, trading auth
 - [ACE Operating Doctrine](ACE-Operating-Doctrine.md): public doctrine anchor
 - [X / Twitter](https://x.com/ace_prooflayer): posts and briefs
 - Private runtime (asso-execution-bridge): full engine and complete doctrine, private for now
-- [ACE-Receipt Spec](docs/ace-receipt-spec/README.md): receipt standard in progress
+- [ACE-Receipt Spec](https://github.com/monkidy/ace-agent-governance-receipt-standard): the public, citable receipt standard
 - [Publications](publications/): published briefs
 - [Receipts](receipts/): evidence trails
 - [AI Ops SOP Pack](https://github.com/monkidy/ai-ops-sop-pack): public SOPs for bounded handoffs and PR audit discipline
@@ -72,3 +72,4 @@ This public repo does not grant runtime authority, merge authority, trading auth
 Asso Lab also includes static [action receipt examples](examples/action-receipts/) showing how ACE represents bounded agent actions: allowed, refused, or requiring human review.
 
 These examples are not runtime proof. They show the public shape of bounded agent governance.
+
