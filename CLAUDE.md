@@ -11,7 +11,7 @@ Read this before touching anything. Update it when the system changes.
 ACE = Autonomous execution Governance: closed-by-default, evidence-first,
 human bounds before autonomy, receipts over claims.
 
-Operator: Hichem Benali (@dismerciatonton on X).
+Operator: Hichem Benali (@ace_prooflayer on X).
 Agent: Claude (ACE CM).
 
 ---
@@ -33,7 +33,7 @@ Agent: Claude (ACE CM).
 ```
 briefing_orchestrator_v0.py   Daily intelligence brief (Gemini, 5 RSS sources)
 telegram_gate.py              Sends draft to Hichem via Asso_CM bot, waits ok/non
-post_to_x.py                  Posts to X (@dismerciatonton) with Proof of Agent receipt
+post_to_x.py                  Posts to X (@ace_prooflayer) with Proof of Agent receipt
 run_pipeline.py               Full pipeline: orchestrator -> gate -> post (one command)
 run.ps1                       Legacy local runner (interactive, Windows only)
 setup_x_env.ps1               One-time X credential setup helper

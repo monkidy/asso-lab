@@ -57,8 +57,8 @@ This public repo does not grant runtime authority, merge authority, trading auth
 ## Links
 
 - [ACE Operating Doctrine](ACE-Operating-Doctrine.md): public doctrine anchor
-- [X / Twitter](https://x.com/dismerciatonton): posts and briefs
-- [Private runtime](https://github.com/monkidy/asso-execution-bridge): full engine and complete doctrine, private for now
+- [X / Twitter](https://x.com/ace_prooflayer): posts and briefs
+- Private runtime (asso-execution-bridge): full engine and complete doctrine, private for now
 - [ACE-Receipt Spec](docs/ace-receipt-spec/README.md): receipt standard in progress
 - [Publications](publications/): published briefs
 - [Receipts](receipts/): evidence trails

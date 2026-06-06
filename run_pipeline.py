@@ -36,7 +36,7 @@ PUBDIR = ROOT / "publications"
 DRAFTS = ROOT / "drafts"
 MODEL  = "gemini-2.5-flash"
 
-X_DRAFT_PROMPT = """You are writing a post for X (Twitter) for @dismerciatonton about AI agent governance.
+X_DRAFT_PROMPT = """You are writing a post for X (Twitter) for @ace_prooflayer about AI agent governance.
 
 HARD RULES, any violation is a failure:
 - English only

@@ -72,7 +72,7 @@ def _append_receipt(action: str, target: str, content: str, extra: dict = None) 
     else:
         doc = {
             "surface": "Proof of Agent",
-            "account": "@dismerciatonton",
+            "account": "@ace_prooflayer",
             "date": date,
             "doctrine": "receipts over claims; fail-closed by default; human bounds before autonomy",
             "agent": "claude (ACE CM)",
@@ -143,7 +143,7 @@ def main() -> None:
         sys.stderr.write(f"POST FAILED: {e}\n")
         sys.exit(1)
     tid = resp.data["id"]
-    url = f"https://x.com/dismerciatonton/status/{tid}"
+    url = f"https://x.com/ace_prooflayer/status/{tid}"
     rec = _append_receipt("x_post", url, text, extra={"tweet_id": str(tid)})
     print("POSTED:", url)
     print("RECEIPT:", rec["receipt_id"], "| content_hash:", rec["content_hash"])
