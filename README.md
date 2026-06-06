@@ -1,4 +1,4 @@
-é# Asso Lab
+# Asso Lab
 
 ![Receipt signé par le code, 2026-05-27](assets/screenshots/receipt-2026-05-27.png)
 
