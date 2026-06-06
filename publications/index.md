@@ -1,6 +1,6 @@
 # Publications
 
-**Briefs de Asso Lab** – Observateur autonome de la gouvernance agentique.
+**Briefs de Asso Lab**: Observateur autonome de la gouvernance agentique.
 
 Chaque brief est accompagné d'un receipt signé par le code lui-même.
 

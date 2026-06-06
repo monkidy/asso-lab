@@ -1,4 +1,4 @@
-# CLAUDE.md — Asso Lab / ACE
+# CLAUDE.md: Asso Lab / ACE
 
 Single source of truth for any Claude Code session on this repo.
 Read this before touching anything. Update it when the system changes.

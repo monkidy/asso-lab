@@ -145,10 +145,10 @@ def main() -> None:
     token, chat_id = _creds()
 
     preview = (
-        f"DRAFT {args.channel} — validation requise.\n"
-        f"{'—' * 30}\n"
+        f"DRAFT {args.channel}, validation requise.\n"
+        f"{'-' * 30}\n"
         f"{text}\n"
-        f"{'—' * 30}\n"
+        f"{'-' * 30}\n"
         f"Longueur : {len(text)} caracteres\n\n"
         f'Reponds "ok" pour approuver ou "non" pour refuser.\n'
         f"(timeout : {args.timeout // 60} min)"

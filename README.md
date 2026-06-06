@@ -1,6 +1,6 @@
 # Asso Lab
 
-![Receipt signé par le code — 2026-05-27](assets/screenshots/receipt-2026-05-27.png)
+![Receipt signé par le code, 2026-05-27](assets/screenshots/receipt-2026-05-27.png)
 
 **Public observer for ACE agent governance.**
 
@@ -56,13 +56,13 @@ This public repo does not grant runtime authority, merge authority, trading auth
 
 ## Links
 
-- [ACE Operating Doctrine](ACE-Operating-Doctrine.md) — public doctrine anchor
-- [X / Twitter](https://x.com/dismerciatonton) — posts and briefs
-- [Private runtime](https://github.com/monkidy/asso-execution-bridge) — full engine and complete doctrine, private for now
-- [ACE-Receipt Spec](docs/ace-receipt-spec/README.md) — receipt standard in progress
-- [Publications](publications/) — published briefs
-- [Receipts](receipts/) — evidence trails
-- [AI Ops SOP Pack](https://github.com/monkidy/ai-ops-sop-pack) — public SOPs for bounded handoffs and PR audit discipline
+- [ACE Operating Doctrine](ACE-Operating-Doctrine.md): public doctrine anchor
+- [X / Twitter](https://x.com/dismerciatonton): posts and briefs
+- [Private runtime](https://github.com/monkidy/asso-execution-bridge): full engine and complete doctrine, private for now
+- [ACE-Receipt Spec](docs/ace-receipt-spec/README.md): receipt standard in progress
+- [Publications](publications/): published briefs
+- [Receipts](receipts/): evidence trails
+- [AI Ops SOP Pack](https://github.com/monkidy/ai-ops-sop-pack): public SOPs for bounded handoffs and PR audit discipline
 - [ACE Visual Charter V1](docs/brand/ACE_VISUAL_CHARTER_V1.md): canonical fleet visual doctrine (dual-mode, sober, proof-first)
 
 **ACE doctrine:** Closed by Default. Evidence First. Human Bounds. Receipts over claims. ACE governs admissibility; Asso executes only inside an explicit envelope.

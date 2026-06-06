@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ACE Publishing Pipeline — full automation.
+"""ACE Publishing Pipeline, full automation.
 
 Chaine complete en un seul lancement :
   1. briefing_orchestrator_v0.py  ->  brief DRAFT du jour
@@ -38,7 +38,7 @@ MODEL  = "gemini-2.5-flash"
 
 X_DRAFT_PROMPT = """You are writing a post for X (Twitter) for @dismerciatonton about AI agent governance.
 
-HARD RULES — any violation is a failure:
+HARD RULES, any violation is a failure:
 - English only
 - NEVER use an em-dash (the — character). Use a comma, colon, or period instead.
 - Length: TARGET 220-250 characters. Hard maximum: 280 characters. Hard minimum: 180 characters. Count every single character including spaces and punctuation.
@@ -129,7 +129,7 @@ def step_gate(draft_path: Path, dry_run: bool, timeout: int) -> int:
         "--channel", "X",
         "--timeout", str(timeout),
     ]
-    rc = _run(cmd, "Etape 3 : gate Telegram — en attente de ta validation")
+    rc = _run(cmd, "Etape 3 : gate Telegram, en attente de ta validation")
     if rc == 0:
         print("[PIPELINE] APPROUVE.")
     elif rc == 1:
@@ -153,12 +153,12 @@ def main() -> None:
                     help="Saute l'etape 1 (brief deja genere aujourd'hui)")
     ap.add_argument("--dry-run",    action="store_true",
                     help="Gate actif, post en dry-run seulement (aucune publication reelle)")
-    ap.add_argument("--post-text",  help="X post custom — bypass etapes 1 a 3, poste directement")
+    ap.add_argument("--post-text",  help="X post custom, bypass etapes 1 a 3, poste directement")
     ap.add_argument("--timeout",    type=int, default=1800,
                     help="Timeout gate Telegram en secondes (defaut 1800 = 30 min)")
     args = ap.parse_args()
 
-    print(f"\n[PIPELINE] ACE Publishing Pipeline — {_today()}")
+    print(f"\n[PIPELINE] ACE Publishing Pipeline, {_today()}")
     print(f"[PIPELINE] dry-run={args.dry_run} | skip-brief={args.skip_brief}")
 
     DRAFTS.mkdir(exist_ok=True)
@@ -204,9 +204,9 @@ def main() -> None:
     # Copie-le depuis le message Telegram et poste-le manuellement sur X.
     x_text = draft_path.read_text(encoding="utf-8").strip()
     print("\n[PIPELINE] APPROUVE. Poste ce texte manuellement sur X :")
-    print(f"\n{'—' * 60}")
+    print(f"\n{'-' * 60}")
     print(x_text)
-    print(f"{'—' * 60}")
+    print(f"{'-' * 60}")
     print(f"\n[PIPELINE] {len(x_text)} caracteres | draft : {draft_path.name}")
     print("[PIPELINE] Termine. Aucune publication automatique.")
 

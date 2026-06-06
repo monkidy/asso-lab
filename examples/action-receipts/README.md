@@ -23,9 +23,9 @@ They show the public shape of bounded agent governance.
 
 ## Examples
 
-- `bounded_file_read.allowed.json` — an agent requests read-only access inside a bounded scope.
-- `forbidden_write.refused.json` — an agent requests a write action outside its boundary and is refused.
-- `export.needs_human_review.json` — an agent requests export of data and requires human approval.
+- `bounded_file_read.allowed.json`: an agent requests read-only access inside a bounded scope.
+- `forbidden_write.refused.json`: an agent requests a write action outside its boundary and is refused.
+- `export.needs_human_review.json`: an agent requests export of data and requires human approval.
 
 ## Core idea
 

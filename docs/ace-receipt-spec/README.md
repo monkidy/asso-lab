@@ -1,4 +1,4 @@
-# ACE-Receipt Spec — Draft V0
+# ACE-Receipt Spec: Draft V0
 
 Standard minimal de preuve d'exécution agentique.
 
@@ -12,7 +12,7 @@ Standard minimal de preuve d'exécution agentique.
 | model | string | Modèle appelé (ex: deepseek-chat) |
 | content_hash | sha256 | Hash du contenu note générée |
 | operator | string | Identifiant humain responsable |
-| confidence | null \| int | Métrique calculée ou null — jamais auto-déclarée par le LLM |
+| confidence | null \| int | Métrique calculée ou null: jamais auto-déclarée par le LLM |
 | status | enum | DRAFT / REVIEWED / PUBLISHED |
 
 ## Principe fondateur

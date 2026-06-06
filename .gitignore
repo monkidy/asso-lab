@@ -10,3 +10,6 @@ logs/*
 !logs/.orchestrator_log.json
 publications/*
 !publications/.gitkeep
+
+# Internal inter-zone notes, never public
+vault/

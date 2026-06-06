@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Proof of Agent — X publisher.
+"""Proof of Agent, X publisher.
 
 Reads X API credentials from .env.x (local, gitignored, never committed).
 Posts a tweet via OAuth 1.0a user context and appends a Proof of Agent receipt.

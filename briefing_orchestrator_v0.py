@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Asso Lab — Briefing Orchestrator V0.
+"""Asso Lab, Briefing Orchestrator V0.
 
 Doctrine ACE : closed-by-default, fail-closed, receipts auditables.
 Le receipt est produit par ce script. Jamais par le LLM.
@@ -23,7 +23,7 @@ except ImportError:
     sys.exit(1)
 
 # Load .env from the script's directory if present. python-dotenv is a hard
-# dep listed in requirements.txt — fail-loud if missing rather than silently
+# dep listed in requirements.txt, fail-loud if missing rather than silently
 # falling back to bare os.environ.
 from dotenv import load_dotenv
 load_dotenv(Path(__file__).parent / ".env")
@@ -35,7 +35,7 @@ MAX_PUBLICATIONS_PER_DAY = 3        # IMMUTABLE
 PUBLISH_WINDOW_START_CET = 7        # IMMUTABLE
 PUBLISH_WINDOW_END_CET = 19         # IMMUTABLE
 MIN_SOURCES_REQUIRED = 3            # IMMUTABLE
-SILENCE_ALERT_HOURS = 24            # ALERTE seulement — ne bloque jamais (mode continu, #6)
+SILENCE_ALERT_HOURS = 24            # ALERTE seulement, ne bloque jamais (mode continu, #6)
 MODEL = "gemini-2.5-flash"
 OPERATOR = "hichem"                 # IMMUTABLE
 
@@ -50,7 +50,7 @@ LOG_FILE = LOGS_DIR / ".orchestrator_log.json"
 STOP_FILE = ROOT / "STOP_LAB"       # arrêt explicite opérateur (commit ce fichier pour pauser)
 
 # =============================================================================
-# SOURCES (à remplir par Hichem — minimum MIN_SOURCES_REQUIRED)
+# SOURCES (à remplir par Hichem, minimum MIN_SOURCES_REQUIRED)
 # =============================================================================
 SOURCES = [
     "https://simonwillison.net/atom/everything/",
@@ -141,7 +141,7 @@ def published_today_count() -> int:
     """Count today's receipts whose status is PUBLISHED.
 
     Publications are counted from the receipts on disk (the source of
-    truth), NOT from 'generation' log entries — generating a DRAFT is not
+    truth), NOT from 'generation' log entries, generating a DRAFT is not
     a publication. This fixes the double-COMMITTED miscount (two runs at
     06:10 + 06:12 produced two COMMITTED entries for a single brief).
     """
@@ -158,7 +158,7 @@ def rate_limited() -> bool:
 def silence_hours():
     """Heures depuis le dernier --ping humain explicite, ou None si jamais pingé.
 
-    #6 : le silence ne BLOQUE plus — il ne sert qu'à émettre une ALERTE.
+    #6 : le silence ne BLOQUE plus, il ne sert qu'à émettre une ALERTE.
     Seul STOP_LAB (signal explicite de Hichem) arrête la publication.
     """
     last = _load_log().get("last_human_interaction")
@@ -276,7 +276,7 @@ def save_and_commit(note: str, receipt: dict) -> str:
         check=True, cwd=ROOT,
     )
     subprocess.run(
-        ["git", "commit", "-m", f"Briefing {today} — DRAFT ({MODEL})"],
+        ["git", "commit", "-m", f"Briefing {today}, DRAFT ({MODEL})"],
         check=True, cwd=ROOT,
     )
 
@@ -357,7 +357,7 @@ def main() -> None:
         ping()
         return
 
-    # Idempotency guard — at most one briefing per UTC day. If today's
+    # Idempotency guard, at most one briefing per UTC day. If today's
     # receipt already exists we do NOT regenerate (regeneration is what
     # produced two COMMITTED entries for a single brief on the 06:10/06:12
     # double-run). Exit 0 cleanly; the cloud workflow reads this as
@@ -370,7 +370,7 @@ def main() -> None:
         print(f"ALREADY_GENERATED_TODAY_{_today_status}")
         return
 
-    # Arrêt explicite opérateur — la SEULE chose qui stoppe la publication (#6).
+    # Arrêt explicite opérateur, la SEULE chose qui stoppe la publication (#6).
     if STOP_FILE.exists():
         _exit("STOP_LAB_PRESENT")
 
@@ -378,9 +378,9 @@ def main() -> None:
     _sh = silence_hours()
     if _sh is None or _sh > SILENCE_ALERT_HOURS:
         _h = "jamais pingé" if _sh is None else f"{_sh:.0f}h sans ping"
-        sys.stderr.write(f"[ALERT] silence humain: {_h} — publication continue\n")
+        sys.stderr.write(f"[ALERT] silence humain: {_h}, publication continue\n")
 
-    # Gate sequence — strict, fail-closed (le silence n'en fait PLUS partie).
+    # Gate sequence, strict, fail-closed (le silence n'en fait PLUS partie).
     if not within_publish_window():
         _exit("OUTSIDE_WINDOW")
     if rate_limited():
@@ -396,7 +396,7 @@ def main() -> None:
     receipt = build_receipt(note, sources_data)
     path = save_and_commit(note, receipt)
     notify_operator(path)
-    print(f"DONE — review avant push : {path}")
+    print(f"DONE, review avant push : {path}")
 
 
 if __name__ == "__main__":
