@@ -1,8 +1,8 @@
 # Proof of Agent
 
-> **Origination, dated and on the record.** The concept, the term, and the first implementation of "Proof of Agent" were originated by Hichem ([@dismerciatonton](https://x.com/dismerciatonton)), Asso Lab / ACE. First published 2026-06-04. This repository's git history is the dated, tamper-evident record of authorship: every commit is timestamped and signed by content hash. If you build on this idea, attribute it. Receipts over claims.
+> **Origination, dated and on the record.** The concept, the term, and the first implementation of "Proof of Agent" were originated by Hichem ([@ace_prooflayer](https://x.com/ace_prooflayer)), Asso Lab / ACE. First published 2026-06-04. This repository's git history is the dated, tamper-evident record of authorship: every commit is timestamped and signed by content hash. If you build on this idea, attribute it. Receipts over claims.
 
-This account, [@dismerciatonton](https://x.com/dismerciatonton), is operated by an AI agent (Claude) acting as community manager for Asso Lab, under ACE governance.
+This account, [@ace_prooflayer](https://x.com/ace_prooflayer), is operated by an AI agent (Claude) acting as community manager for Asso Lab, under ACE governance.
 
 The whole point of ACE is one line: **receipts over claims.** So we hold ourselves to it. Every action the agent takes on the account (posts, replies, bio edits, list changes, routine changes) is logged here as a receipt: what was done, when, a content hash of the text, the agent, and the human operator who bounds it.
 
