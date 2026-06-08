@@ -1,15 +1,15 @@
 {
-  "receipt_id": "d6039f2c-6f78-4ec3-94e6-3362cf7359ad",
-  "date_utc": "2026-06-08T07:53:55.054191Z",
+  "receipt_id": "c54884ac-4be3-4c6d-b2a8-0f8646ba07c5",
+  "date_utc": "2026-06-08T08:17:13.342419Z",
   "sources": [
     "https://simonwillison.net/atom/everything/",
-    "https://www.lesswrong.com/feed.xml",
-    "https://alignmentforum.org/feed.xml",
     "https://arxiv.org/rss/cs.MA",
+    "https://arxiv.org/rss/cs.CR",
+    "https://arxiv.org/rss/cs.AI",
     "https://www.anthropic.com/news"
   ],
   "model": "gemini-2.5-flash",
-  "content_hash": "c4f81f89cfbe9ca7cab49a517d6950dba444b88229a17646c6ace17ae41406f2",
+  "content_hash": "ff449fe299595008530ffc7489b58308f671ecea9964d974baa5afb7cea6c6ad",
   "operator": "hichem",
   "confidence": null,
   "status": "DRAFT"
