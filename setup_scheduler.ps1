@@ -6,7 +6,20 @@
 $ErrorActionPreference = 'Stop'
 
 $RepoPath   = $PSScriptRoot
-$Python     = (Get-Command python -ErrorAction Stop).Source
+
+# Resout le VRAI interpreteur, jamais le shim WindowsApps (App Execution Alias),
+# qui ne se comporte pas pareil en session non-interactive (Session 0) a 13h00.
+$Python = (Get-Command python -All -ErrorAction SilentlyContinue |
+    Where-Object { $_.Source -and $_.Source -notlike "*WindowsApps*" } |
+    Select-Object -First 1).Source
+if (-not $Python) {
+    # Fallback : le lanceur py resout l'install reelle.
+    $Python = (& py -3 -c "import sys; print(sys.executable)" 2>$null)
+}
+if (-not $Python -or -not (Test-Path $Python)) {
+    throw "Aucun interpreteur Python reel trouve hors WindowsApps. Installe python.org ou corrige le PATH."
+}
+
 $TaskName   = "ACE Daily Pipeline"
 $LogFile    = Join-Path $RepoPath "logs\scheduler.log"
 

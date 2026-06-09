@@ -83,7 +83,7 @@ if ($LASTEXITCODE -ne 0) {
 git add $receiptPath
 if ($LASTEXITCODE -ne 0) { Write-Host "git add failed" -ForegroundColor Red; exit 1 }
 
-git commit -m "Receipt $today: PUBLISHED"
+git commit -m "Receipt ${today}: PUBLISHED"
 if ($LASTEXITCODE -ne 0) { Write-Host "git commit failed" -ForegroundColor Red; exit 1 }
 
 Write-Host "Receipt committe localement." -ForegroundColor Green
@@ -103,3 +103,4 @@ if ($LASTEXITCODE -ne 0) { Write-Host "git push failed" -ForegroundColor Red; ex
 
 Write-Host ""
 Write-Host "Done. Pushed to origin/main." -ForegroundColor Green
+

@@ -41,9 +41,9 @@ X_DRAFT_PROMPT = """You are writing a post for X (Twitter) for @ace_prooflayer a
 HARD RULES, any violation is a failure:
 - English only
 - NEVER use an em-dash (the — character). Use a comma, colon, or period instead.
-- Length: TARGET 220-250 characters. Hard maximum: 280 characters. Hard minimum: 180 characters. Count every single character including spaces and punctuation.
+- Length: TARGET 200-235 characters. Hard maximum: 265 characters. Hard minimum: 180 characters. Count every single character including spaces and punctuation. When in doubt, write fewer words, never more.
 - No URLs or links anywhere in the post
-- Structure: (1) contrarian hook that stops the scroll, (2) insight through a receipts-over-claims lens, (3) one proof: a number, a fact, or a concrete failure mode, (4) closing principle
+- Structure: (1) contrarian hook built on a concrete failure mode or number, (2) the deny-path / admissibility angle: who holds the refusal, model proposes and kernel disposes, (3) one proof: a number, a fact, or a failure mode, (4) closing principle
 - End with a variant of "Receipts over claims."
 - Voice: declarative, dry, technical. No marketing language. Short sentences.
 
@@ -86,31 +86,57 @@ def generate_x_draft(brief: str) -> str:
     # On coupe le brief a 3000 chars pour rester dans les limites du prompt
     source = brief[:3000] + ("..." if len(brief) > 3000 else "")
 
-    for attempt in range(5):
-        resp = client.chat.completions.create(
-            model=MODEL,
-            messages=[{"role": "user", "content": X_DRAFT_PROMPT + source}],
-            # gemini-2.5-flash est un modele a raisonnement : un budget trop bas
-            # est englouti par le thinking avant que le post ne soit ecrit.
-            # On laisse large, la longueur reelle est bornee par les validations.
-            max_tokens=2048,
-        )
+    import time
+
+    MAX_ATTEMPTS = 5        # tentatives de CONTENU (un overshoot consomme une tentative)
+    RL_PAUSE = 25           # pause sur 429/503 (free tier = 5 req/min), retry sans consommer
+    last_text = ""
+    attempts = 0
+    while attempts < MAX_ATTEMPTS:
+        try:
+            resp = client.chat.completions.create(
+                model=MODEL,
+                messages=[{"role": "user", "content": X_DRAFT_PROMPT + source}],
+                # gemini-2.5-flash est un modele a raisonnement : un budget trop bas
+                # est englouti par le thinking avant que le post ne soit ecrit.
+                # On laisse large, la longueur reelle est bornee par les validations.
+                max_tokens=2048,
+            )
+        except Exception as e:
+            # 429 (quota/min) ou 503 (surcharge) : transitoire, on attend et on retente
+            # SANS consommer de tentative, plutot que de crasher tout le pipeline.
+            msg = str(e)
+            if any(k in msg for k in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE")):
+                sys.stderr.write(f"[PIPELINE] Gemini transitoire (quota/dispo), pause {RL_PAUSE}s puis retry.\n")
+                time.sleep(RL_PAUSE)
+                continue
+            sys.stderr.write(f"[PIPELINE] ERROR appel LLM non transitoire: {e}\n")
+            sys.exit(1)
+
+        attempts += 1
         text = (resp.choices[0].message.content or "").strip().strip('"').strip("'")
+        last_text = text
 
         # Validations
         if "—" in text or "―" in text:
-            sys.stderr.write(f"[PIPELINE] Tentative {attempt+1}: em-dash detecte, on regenere.\n")
+            sys.stderr.write(f"[PIPELINE] Tentative {attempts}: em-dash detecte, on regenere.\n")
+            time.sleep(3)
             continue
         if len(text) > 280:
-            sys.stderr.write(f"[PIPELINE] Tentative {attempt+1}: {len(text)} chars > 280, on regenere.\n")
+            sys.stderr.write(f"[PIPELINE] Tentative {attempts}: {len(text)} chars > 280, on regenere.\n")
+            time.sleep(3)   # espace les appels pour rester sous 5 req/min
             continue
         if len(text) < 100:
-            sys.stderr.write(f"[PIPELINE] Tentative {attempt+1}: draft trop court ({len(text)} chars), on regenere.\n")
+            sys.stderr.write(f"[PIPELINE] Tentative {attempts}: draft trop court ({len(text)} chars), on regenere.\n")
+            time.sleep(3)
             continue
 
         return text
 
-    sys.stderr.write("[PIPELINE] ERROR: impossible de generer un draft valide apres 3 tentatives.\n")
+    sys.stderr.write(
+        f"[PIPELINE] ERROR: aucun draft valide apres {MAX_ATTEMPTS} tentatives. "
+        f"Dernier ({len(last_text)} chars) non poste.\n"
+    )
     sys.exit(1)
 
 
