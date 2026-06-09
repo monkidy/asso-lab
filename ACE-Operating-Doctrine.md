@@ -1,6 +1,8 @@
-# ACE: Autonomous Execution Governance Doctrine
+# ACE Operating Doctrine
 
-ACE is an applied operating doctrine for bounding, auditing, and governing AI agent work.
+ACE is an applied operating doctrine for agentic governance: closed by default, evidence first, human bounds, and receipts over claims.
+
+It is designed for AI-agent work that needs to stay bounded, reviewable, and revocable.
 
 Autonomy without governance is not intelligence. It is liability.
 
@@ -36,7 +38,7 @@ Asso, or any agent operating under the doctrine, executes only inside an explici
 
 A receipt is not marketing proof and not formal verification.
 
-It is a code-generated evidence trail: status, hash, sources, timestamp, signature or other explicit fields when present. Its role is to make review possible and reduce false readiness claims.
+It is a code-generated evidence trail: status, hash, sources, timestamp, signature, or other explicit fields when present. Its role is to make review possible and reduce false readiness claims.
 
 ### 6. Fail-Closed by Default
 
@@ -56,6 +58,7 @@ Public artifacts do not grant runtime authority, merge authority, trading author
 
 - `ai-ops-sop-pack`: public SOPs for bounded handoffs, PR audit discipline, cold recovery, and operator review.
 - `asso-lab`: public observer surface showing code-generated receipts and traceable briefs.
+- `ace-agent-governance-receipt-standard`: public receipt standard for mandate, proposal, action receipt, and refusal receipt shape.
 - `asso-execution-bridge`: private runtime and full operating system, not used as public proof until its boundaries are ready to expose.
 
 ## Language discipline
@@ -70,7 +73,7 @@ Do not claim production readiness, formal verification, autonomous permission-to
 
 ## Version
 
-Version: 0.1
-Date: 2026-05-31
+Version: 0.2
+Date: 2026-06-09
 Author: Hichem Benali
 Status: PUBLIC_DOCTRINE_ANCHOR_V0
