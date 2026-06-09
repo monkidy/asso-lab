@@ -4,6 +4,16 @@ Public, dated build log of Asso Lab and the ACE public surface. Newest first.
 Receipts over claims: every entry is dated, and this repository's git history is
 the tamper-evident record. For action-level proof, see `proof-of-agent/`.
 
+## v0.5 (2026-06-09)
+- Reader-first public model pass.
+- Added `START_HERE.md` plain English guide.
+- Added `VISUAL_OVERVIEW.md` with diagrams and one-screen tables.
+- Added `STATUS.md` to separate public proof from private runtime claims.
+- Added `CONTRIBUTING.md` to preserve bounded, evidence-first contribution rules.
+- Added Apache-2.0 `LICENSE`.
+- Rewrote `README.md` as a public entry point with clear public/private boundary.
+- Clarified `ACE-Operating-Doctrine.md` wording for external readers.
+
 ## v0.4 (2026-06-05)
 - Telegram validation gate (`telegram_gate.py`): drafts envoyes a Asso_CM bot, publication bloquee jusqu'a ok/non explicite de l'operateur.
 - Pipeline chaine (`run_pipeline.py`): orchestrateur + gate + post_to_x en un seul lancement.
