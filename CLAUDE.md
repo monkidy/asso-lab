@@ -38,6 +38,8 @@ run_pipeline.py               Full pipeline: orchestrator -> gate -> post (one c
 run.ps1                       Legacy local runner (interactive, Windows only)
 setup_x_env.ps1               One-time X credential setup helper
 
+routines/veille.md            Prompt canonique de la veille scheduled (source de verite)
+
 docs/comms-field-note-format.md   Canonical X + LinkedIn format (ACE Field Note)
 ACE-Operating-Doctrine.md         Public doctrine anchor
 brand/BRAND.md                    Visual identity (ink/paper, monospace, proof seal)
@@ -135,13 +137,16 @@ Produce all four in one session run.
 
 ### Intelligence veille (3x per weekday)
 
-Run by Claude Code on demand. Produces a 4-flux report:
-1. Leads (buying signals, job postings for AI reliability/governance)
-2. Competitors (agent observability, guardrails, governance tools)
-3. Hot topics (agent failures, HITL debate, EU AI Act)
-4. OSS (OPA, Cedar, OTel GenAI, guardrails repos)
+Prompt canonique : `routines/veille.md`. C'est la source de verite. La tache scheduled copie ou reference ce fichier. Ne pas modifier le prompt dans l'interface scheduled sans l'avoir d'abord mis a jour ici.
 
-Output: private intel, never committed to repo.
+La tache lit CLAUDE.md au demarrage (etape 0 obligatoire) pour charger :
+- La section "Concurrents suivis" (evite de re-rapporter l'existant).
+- Le format ACE Field Note (docs/comms-field-note-format.md).
+- Le perimetre public/prive (STATUS.md).
+
+Produit en retour : rapport 4 flux + proposition de mise a jour CLAUDE.md si nouveau concurrent. Operateur approuve avant toute modification.
+
+Output : intel privee, jamais committee dans le repo.
 
 ### Daily comms-prep (weekdays, target 13h CET)
 
@@ -163,6 +168,24 @@ Counter-position on competitors:
 
 ---
 
+## Concurrents suivis
+
+Mis a jour au fil des runs de veille. La veille lit cette section pour eviter de re-rapporter l'existant.
+Si un concurrent evolue (nouveau tour de table, repositionnement), la veille le signale et soumet une
+proposition de mise a jour pour validation operateur.
+
+| Nom | Positionnement | Trou laisse | Wedge ACE | Derniere maj |
+|-----|---------------|-------------|-----------|--------------|
+| Geordie AI | Discovery et cartographie d'agents (shadow AI inclus), alertes runtime, outil "Beam" de remediation post-violation. $30M Series A mai 2026, Balderton, $180M post-money. Clients: AlphaSense, Owkin. | Reactif, pas preventif. Pas de politique declarative avant execution. Aucun fail-closed. | "Geordie cartographie. ACE decide ce qui est autorise." | 2026-06-15 |
+| Galileo | Eval + observabilite + guardrails. $68M leves (Series B oct 2024). Clients: Comcast, Twilio. Pre-prod evals -> prod governance. | Enforcement s'appuie sur des integrations externes, pas in-line. | "Galileo mesure. ACE bloque." | 2026-06-15 |
+| Credo AI | GRC (governance, risk, compliance). Policy packs EU AI Act, NIST AI RMF, ISO 42001. Forrester Wave Leader. | Compliance theater: le reporting est la, l'enforcement runtime ne l'est pas. | "Credo prouve que vous avez des politiques. ACE prouve que vos agents les respectent." | 2026-06-15 |
+| Arthur | Agent Discovery and Governance (ADG). Purpose-built agentic, runtime guardrails, self-correction loops. | Pas de doctrine operationnelle claire. Posture produit, pas posture de fiabilite. | "Arthur installe la boite. ACE dit ce qui entre et ce qui sort." | 2026-06-15 |
+| future-agi | OSS (Apache 2.0), end-to-end: eval, tracing, guardrails, gateway, simulation. 1.1K etoiles, actif (v0.5.8 juin 2026). | Observe et evalue. Aucun moteur de politique declaratif, aucun fail-closed natif. | "future-agi observe et evalue. ACE gouverne et arrete." | 2026-06-15 |
+| Virtue AI | Guardrails configurables, $30M leve 2025, Lightspeed + Walden Catalyst. | Guardrails configurables par l'equipe produit, pas une doctrine operateur-first. | "Virtue limite ce que l'agent peut faire. ACE decide qui a le droit de lui demander." | 2026-06-15 |
+| Aigentsphere | Control plane unifie: register agents, monitor, enforce policies, compliance reporting auto. $4M seed avril 2026. | Startup tres jeune, produit a prouver en prod. | "Aigentsphere gere le registre. ACE gere l'autorisation." | 2026-06-15 |
+
+---
+
 ## Target accounts for X reply game
 
 docs/comms-field-note-format.md has the full list.
@@ -180,5 +203,5 @@ No prior published Field Notes before 2026-06-05.
 
 ## Version
 
-Last updated: 2026-06-05
+Last updated: 2026-06-15
 Status: OPERATIONAL
