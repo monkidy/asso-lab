@@ -1,0 +1,16 @@
+{
+  "receipt_id": "7d070f56-8e28-4280-93e1-f8f6f525d2ca",
+  "date_utc": "2026-06-16T14:22:45.440134Z",
+  "sources": [
+    "https://simonwillison.net/atom/everything/",
+    "https://arxiv.org/rss/cs.MA",
+    "https://arxiv.org/rss/cs.CR",
+    "https://arxiv.org/rss/cs.AI",
+    "https://www.anthropic.com/news"
+  ],
+  "model": "gemini-2.5-flash",
+  "content_hash": "812f8ba0655d1927a6a591fa03286dfc9e677ead844baf9dec7f664ba772cf8a",
+  "operator": "hichem",
+  "confidence": null,
+  "status": "DRAFT"
+}
