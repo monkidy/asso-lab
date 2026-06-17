@@ -15,6 +15,25 @@ Positioning label: "Agentic SRE".
 Operator: Hichem Benali (@ace_prooflayer on X).
 Agent: Claude (ACE CM).
 
+**Project stage (2026-06-17): brand-building and doctrine publication.**
+No commercial product, no enterprise clients, no pricing. Output = public doctrine + content.
+Leads identified in veille runs are market signals, not active sales pipeline.
+The "Agentic SRE" pivot is recent; LinkedIn still shows DBA Oracle background.
+
+---
+
+## Operator profile (calibration context)
+
+- Background: DBA Oracle Senior (TJM 850EUR), 10+ years critical data infrastructure, then
+  algorithmic marketing and AI governance.
+- Handle X: @ace_prooflayer (canonical, changed from @dismerciatonton earlier in 2026).
+- LinkedIn: fr.linkedin.com/in/hichembenali
+- Homonymic noise: "Hichem Benali" as a civil name returns "Pacha d'Oran" political results
+  on search engines. All content and outreach under @ace_prooflayer only. Never build
+  visibility under the civil name alone.
+- Origin story asset: DBA background = real lived experience of fail-closed, audit trails,
+  disaster recovery in prod. This is a credibility moat no VC-backed competitor can claim.
+
 ---
 
 ## Hard rules (non-negotiable)
@@ -176,12 +195,14 @@ proposition de mise a jour pour validation operateur.
 | Nom | Positionnement | Trou laisse | Wedge ACE | Derniere maj |
 |-----|---------------|-------------|-----------|--------------|
 | Geordie AI | Discovery et cartographie d'agents (shadow AI inclus), alertes runtime, outil "Beam" de remediation post-violation. $30M Series A mai 2026, Balderton, $180M post-money. Clients: AlphaSense, Owkin. | Reactif, pas preventif. Pas de politique declarative avant execution. Aucun fail-closed. | "Geordie cartographie. ACE decide ce qui est autorise." | 2026-06-15 |
-| Galileo | Eval + observabilite + guardrails. $68M leves (Series B oct 2024). Clients: Comcast, Twilio. Pre-prod evals -> prod governance. | Enforcement s'appuie sur des integrations externes, pas in-line. | "Galileo mesure. ACE bloque." | 2026-06-15 |
+| Galileo | Eval + observabilite + guardrails + Agent Control (control plane open source Apache 2.0, mars 2026). $68M leves. Partenaires: CrewAI, Glean, Cisco AI Defense. | Control plane generique, pas operator-first. Policies ecrites par les devs. Aucun fail-closed natif. Open source = zero SLA. | "Galileo standardise les guardrails. ACE gouverne qui a le droit de les modifier." | 2026-06-17 |
 | Credo AI | GRC (governance, risk, compliance). Policy packs EU AI Act, NIST AI RMF, ISO 42001. Forrester Wave Leader. | Compliance theater: le reporting est la, l'enforcement runtime ne l'est pas. | "Credo prouve que vous avez des politiques. ACE prouve que vos agents les respectent." | 2026-06-15 |
 | Arthur | Agent Discovery and Governance (ADG). Purpose-built agentic, runtime guardrails, self-correction loops. | Pas de doctrine operationnelle claire. Posture produit, pas posture de fiabilite. | "Arthur installe la boite. ACE dit ce qui entre et ce qui sort." | 2026-06-15 |
 | future-agi | OSS (Apache 2.0), end-to-end: eval, tracing, guardrails, gateway, simulation. 1.1K etoiles, actif (v0.5.8 juin 2026). | Observe et evalue. Aucun moteur de politique declaratif, aucun fail-closed natif. | "future-agi observe et evalue. ACE gouverne et arrete." | 2026-06-15 |
 | Virtue AI | Guardrails configurables, $30M leve 2025, Lightspeed + Walden Catalyst. | Guardrails configurables par l'equipe produit, pas une doctrine operateur-first. | "Virtue limite ce que l'agent peut faire. ACE decide qui a le droit de lui demander." | 2026-06-15 |
 | Aigentsphere | Control plane unifie: register agents, monitor, enforce policies, compliance reporting auto. $4M seed avril 2026. | Startup tres jeune, produit a prouver en prod. | "Aigentsphere gere le registre. ACE gere l'autorisation." | 2026-06-15 |
+| CodeIntegrity | Runtime security guardrails: controle des tool calls, acces aux systemes et donnees, preuves d'execution. $5M seed mai 2026 (Syn Ventures, Antler, Boost VC). 6 clients en pilot. SF-based. | Securite-first, pas gouvernance-first. Pas de politique declarative operateur, pas de fail-closed par defaut. | "CodeIntegrity filtre ce que l'agent peut faire. ACE decide qui a le droit de lui demander." | 2026-06-17 |
+| Microsoft Agent Governance Toolkit | Toolkit OSS MIT (avril 2026): moteur de politique YAML/OPA/Cedar, identite inter-agents, execution sandboxing, SRE pour agents, compliance EU AI Act/HIPAA/SOC2. 3 300+ etoiles, 467 forks. | Toolkit sans doctrine: fail-closed non par defaut, policies ecrites par les devs pas par l'operateur, aucune couche operateur-first. | "Microsoft fournit les outils. ACE est la doctrine qui dit ce qui est autorise avant que le premier outil soit installe." | 2026-06-17 |
 
 ---
 
@@ -198,9 +219,17 @@ Spend more time replying than posting. Sharp reply in first 10-30 min after a bi
 First post = ACE Field Note #1. Increment per published brief.
 No prior published Field Notes before 2026-06-05.
 
+**Current count (2026-06-17): 1 published.**
+Receipt: proof-of-agent/receipts/2026-06-04.json (x_post, pinned to profile).
+Next post = ACE Field Note #2.
+
+**Pipeline health flag**: as of 2026-06-17, briefings exist for 2026-06-05 through 2026-06-11
+with no corresponding proof-of-agent receipts. Gate either not checked or not triggered.
+publications/index.md last updated 2026-06-03. Backlog = at minimum 6 unposted briefings.
+
 ---
 
 ## Version
 
 Last updated: 2026-06-17
-Status: OPERATIONAL
+Status: OPERATIONAL — brand-building phase, pipeline backlog flag active
