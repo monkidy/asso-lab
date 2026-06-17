@@ -10,6 +10,7 @@ Read this before touching anything. Update it when the system changes.
 **Asso Lab** is the public observer surface of the ACE doctrine.
 ACE = Autonomous execution Governance: closed-by-default, evidence-first,
 human bounds before autonomy, receipts over claims.
+Positioning label: "Agentic SRE".
 
 Operator: Hichem Benali (@ace_prooflayer on X).
 Agent: Claude (ACE CM).
@@ -163,8 +164,10 @@ Asso_CM bot sends a Telegram push when the brief DRAFT is ready.
 - Fail-Closed: when in doubt, stop and surface the reason
 
 Counter-position on competitors:
-- Observability tools (Galileo, Arize, Langfuse): they watch what happened. ACE governs what is allowed.
-- Microsoft AGT: installs the rails. ACE tells you how to drive, when to stop, how to investigate.
+- Observability tools: they watch what happened. ACE governs what is allowed.
+- Runtime guardrail tools: they filter what the agent can do. ACE decides who has the right to ask.
+- Compliance platforms: they prove you have policies. ACE proves your agents respect them.
+See "Concurrents suivis" table below for current names, wedges, and last-updated dates.
 
 ---
 
@@ -203,5 +206,5 @@ No prior published Field Notes before 2026-06-05.
 
 ## Version
 
-Last updated: 2026-06-15
+Last updated: 2026-06-17
 Status: OPERATIONAL
