@@ -1,19 +1,7 @@
 # Routine : Veille ACE
 
-Prompt canonique de la tache de veille scheduled.
-Source de verite : ce fichier. Toute modification du contexte projet se fait dans CLAUDE.md, pas ici.
-
----
-
-## Etape 0 : charger le contexte projet (obligatoire)
-
-Avant de chercher quoi que ce soit :
-
-1. Lire `CLAUDE.md` en entier.
-2. Lire `docs/comms-field-note-format.md` (regles de format, angles de reply, roster cibles).
-3. Lire `STATUS.md` (perimetre public vs. prive, ce que le repo peut prouver).
-
-Le contexte derive de ces fichiers, pas du prompt. Si CLAUDE.md evolue (nouveaux concurrents, nouvelle regle), la veille evolue automatiquement.
+Prompt canonique de la tache de veille hebdomadaire.
+Source de verite : ce fichier. Toute evolution du contexte projet se fait dans CLAUDE.md.
 
 ---
 
@@ -27,9 +15,9 @@ ACE = gouvernance et fiabilite des agents IA ; "Agentic SRE". Doctrine : receipt
 
 ## Mission
 
-Produire une veille ACTIONNABLE en 4 flux. Chercher sur le web (WebSearch, puis WebFetch pour verifier les sources cles). Jamais d'invention. Chaque item porte un lien source verifie.
+Produire une veille ACTIONNABLE en 4 flux sur la semaine ecoulee. Chercher sur le web (WebSearch puis WebFetch pour verifier les sources cles). Ne jamais inventer. Chaque item porte un lien source verifie. Si tu n'es pas sur : dis-le.
 
-**Confidentialite :** intel privee. Livree dans la reponse uniquement. Rien n'est ecrit dans le repo, aucun commit, aucune publication, aucun compte touche.
+Confidentialite : intel privee. Livree dans la reponse uniquement. Rien n'est ecrit dans le repo, aucun commit, aucune publication, aucun compte touche.
 
 ---
 
@@ -37,21 +25,8 @@ Produire une veille ACTIONNABLE en 4 flux. Chercher sur le web (WebSearch, puis 
 
 Cette routine s'execute sans operateur en train de lire. A la fin du run :
 
-- Si des findings actionnables ont ete trouves : envoyer un PushNotification. Placer le resume dans des balises `<routine_summary>`. La premiere phrase devient le banner mobile ; le reste devient l'email. Inclure : le TOP 3 en une ligne chacun, et tout blocage (acces refuse, commande en echec, session bloquee).
-- Si rien de nouveau ou d'actionnable : ne pas notifier. Le silence est la reponse correcte pour un run sans signal.
-
-Le rapport complet reste dans la reponse de la session. La notification est le seul canal que Hichem voit.
-
----
-
-## Regles de filtrage
-
-Avant de signaler un concurrent ou un sujet :
-
-- Verifier qu'il n'est pas deja dans la section "Concurrents suivis" de CLAUDE.md. Si oui, ne le reporter que si l'evolution est majeure (nouveau tour de table, changement de produit, repositionnement).
-- Preferer un item neuf et specifique a trois items generiques.
-- Max 3 items par flux. Seulement les meilleurs.
-- Score chaque item : chaud / moyen / froid.
+- Si des findings actionnables ont ete trouves : envoyer un PushNotification avec le TOP 3 dans les balises <routine_summary>. La premiere phrase devient le banner mobile ; le reste devient l'email.
+- Si rien de nouveau ou d'actionnable : ne pas notifier. Le silence est la reponse correcte.
 
 ---
 
@@ -59,11 +34,10 @@ Avant de signaler un concurrent ou un sujet :
 
 ### FLUX 1 : LEADS
 
-Signaux d'achat et intentions reelles. Pas de mentions vagues.
+Signaux d'achat, pas mentions vagues. Traquer la douleur et l'intention :
 
-Traquer :
-- Incidents d'agents en prod decrits publiquement (nom de l'entreprise, ce qui a failli, consequences chiffrees si possible).
-- Offres d'emploi recentes (AI reliability engineer, agent ops, LLM platform engineer, AI governance, MLOps pour agents). Une boite qui recrute ca a le probleme ACE.
+- Incidents d'agents en prod decrits publiquement (nom de la boite, ce qui a failli, consequences chiffrees si possible).
+- Offres d'emploi recentes : AI reliability engineer, agent ops, LLM platform engineer, AI governance, MLOps pour agents. Une boite qui recrute ca a le probleme ACE.
 
 Par item : qui, pourquoi ca matche ACE, un angle d'approche concret en une phrase.
 
@@ -71,78 +45,61 @@ Par item : qui, pourquoi ca matche ACE, un angle d'approche concret en une phras
 
 Produits et boites sur : fiabilite, gouvernance, observabilite, eval, guardrails, agent ops, AI gateways.
 
-Ne pas reporter "X a sorti Y". Donner :
-- Le SO WHAT (qu'est-ce que ca change dans le marche).
-- Le trou qu'ils laissent.
-- Le wedge ACE (comment ACE se differencie).
-- Une contre-position en une phrase.
+Pas "X a sorti Y". Donner : le SO WHAT, le trou qu'ils laissent, une contre-position ACE en une phrase.
 
-Comparer avec les entrees deja dans "Concurrents suivis" de CLAUDE.md. Signaler les evolutions, pas re-rapporter l'existant.
+Verifier d'abord la section "Concurrents suivis" de CLAUDE.md. Ne reporter un concurrent existant que si l'evolution est majeure (tour de table, repositionnement). Privilegier les nouveaux entrants.
 
 ### FLUX 3 : SUJETS CHAUDS
 
-Debats, articles, posts qui montent sur : agents en prod, echecs d'agents, gouvernance IA, HITL, EU AI Act, eval de fiabilite.
+Debats, articles, posts qui ont monte cette semaine sur : agents en prod, echecs d'agents, gouvernance IA, HITL, eval de fiabilite.
 
-Pour chaque sujet : ou Hichem peut se positionner TOT avec l'angle R.O.C.
+Pour chaque sujet : ou Hichem peut encore se positionner avec l'angle R.O.C.
 
-Si un sujet merite un post, fournir un brouillon pret dans la voix de Hichem :
+Si un sujet merite un post, fournir un brouillon dans la voix de Hichem :
 - Sec, declaratif, angle R.O.C.
-- Jamais de tiret cadratin (le caractere long : interdiction absolue, voir CLAUDE.md).
-- X = anglais, max 280 caracteres.
+- Jamais de tiret cadratin. Jamais.
+- X = anglais, max 280 caracteres, zero lien dans le corps.
 - LinkedIn = francais, paragraphes courts.
 
-### FLUX 4 : OSS / GITHUB
+### FLUX 4 : SIGNAL CONCURRENT OSS
 
-Repos utiles par sous-probleme ACE :
-- Moteurs de politique et autorisation (OPA, Cedar).
-- Audit et tracabilite (OpenTelemetry GenAI SIG, audit logs).
-- Eval harnesses et guardrails.
-- Sandboxing d'execution.
+Deux angles uniquement :
 
-Privilegier les repos avec traction recente (etoiles en hausse, commits < 30 jours). Signaler les nouveaux entrants OSS qui pourraient concurrencer ACE.
+1. Nouveaux entrants OSS qui pourraient concurrencer ACE (moteurs de politique declaratifs, gouvernance d'agents, guardrails open-source). Signaler si traction visible (etoiles en hausse, activite recente).
+2. Repos qui valident l'approche ACE et peuvent servir d'angle editorial. Une ligne, pas d'audit technique.
+
+---
+
+## Standards
+
+- ACTION a chaque item : "reponds a ca", "contacte avec cet angle", "ecris un post", "contre ce claim".
+- FILTRE SANS PITIE : max 3 items par flux, seulement les meilleurs.
+- SCORE chaque item : chaud / moyen / froid.
+- BROUILLON pret si un sujet merite un post (regles voix ci-dessus).
 
 ---
 
 ## Format de livraison
 
-Structure obligatoire :
+Structure obligatoire, bref et tranchant, zero remplissage :
 
-```
-## VEILLE ACE - [DATE]
+### VEILLE ACE - [DATE]
 
 ### TOP 3 A FAIRE MAINTENANT
-[3 actions prioritaires tous flux confondus, pour agir en 2 minutes]
+[3 actions tous flux confondus. Une ligne chacune. Hichem agit en 2 minutes.]
 
 ### FLUX 1 : LEADS
 [1-3 items : lien source + score + action concrete]
 
 ### FLUX 2 : CONCURRENTS
-[1-3 items : lien source + so what + wedge ACE + contre-position]
+[1-3 items : lien source + so what + contre-position ACE]
 
 ### FLUX 3 : SUJETS CHAUDS
 [1-3 items : lien source + angle ROC + brouillon post si applicable]
 
-### FLUX 4 : OSS / GITHUB
-[1-3 items : lien source + pertinence ACE + action]
+### FLUX 4 : SIGNAL CONCURRENT OSS
+[1-3 items : lien source + signal concurrentiel ou angle editorial]
 
 ### MISE A JOUR CLAUDE.md PROPOSEE
-[Si un nouveau concurrent majeur est identifie, proposer ici
-le texte exact a ajouter dans la section "Concurrents suivis"
-de CLAUDE.md. Ne pas modifier CLAUDE.md directement.
-Soumettre a validation operateur.]
-```
-
-Bref et tranchant. Zero remplissage. Le TOP 3 est la premiere chose que Hichem lit.
-
----
-
-## Boucle meta
-
-La veille alimente CLAUDE.md, qui alimente la prochaine veille.
-
-Apres chaque run :
-- Si un concurrent majeur est decouvert : proposer son ajout dans "Concurrents suivis" de CLAUDE.md (texte exact fourni, pas de modification directe).
-- Si un sujet recurrent emerge : proposer son ajout dans les angles de reply de `docs/comms-field-note-format.md`.
-- Si une regle du jeu change (nouveau acteur, regulation) : signaler pour mise a jour de CLAUDE.md.
-
-L'operateur approuve ou refuse chaque proposition avant modification.
+[Si nouveau concurrent majeur identifie : texte exact a ajouter dans "Concurrents suivis".
+Ne pas modifier CLAUDE.md directement. L'operateur approuve et applique.]

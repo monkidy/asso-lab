@@ -39,7 +39,8 @@ run_pipeline.py               Full pipeline: orchestrator -> gate -> post (one c
 run.ps1                       Legacy local runner (interactive, Windows only)
 setup_x_env.ps1               One-time X credential setup helper
 
-routines/veille.md            Prompt canonique de la veille scheduled (source de verite)
+routines/daily-content.md     Prompt canonique du daily content scheduled (source de verite)
+routines/veille.md            Prompt canonique de la veille hebdomadaire (source de verite)
 
 docs/comms-field-note-format.md   Canonical X + LinkedIn format (ACE Field Note)
 ACE-Operating-Doctrine.md         Public doctrine anchor
@@ -136,18 +137,13 @@ Produce all four in one session run.
 
 ## Routines
 
-### Intelligence veille (3x per weekday)
+### Daily content (quotidien, jours ouvres)
 
-Prompt canonique : `routines/veille.md`. C'est la source de verite. La tache scheduled copie ou reference ce fichier. Ne pas modifier le prompt dans l'interface scheduled sans l'avoir d'abord mis a jour ici.
+Prompt canonique : `routines/daily-content.md`. Job unique : produire 1 draft publiable (post X ou reply cible) base sur ce qui est chaud dans la niche ce jour. Output via PushNotification. Jamais commite dans le repo.
 
-La tache lit CLAUDE.md au demarrage (etape 0 obligatoire) pour charger :
-- La section "Concurrents suivis" (evite de re-rapporter l'existant).
-- Le format ACE Field Note (docs/comms-field-note-format.md).
-- Le perimetre public/prive (STATUS.md).
+### Veille strategique (hebdomadaire)
 
-Produit en retour : rapport 4 flux + proposition de mise a jour CLAUDE.md si nouveau concurrent. Operateur approuve avant toute modification.
-
-Output : intel privee, jamais committee dans le repo.
+Prompt canonique : `routines/veille.md`. 4 flux : leads, concurrents, sujets chauds, signal concurrent OSS. Produit un rapport + proposition de mise a jour CLAUDE.md si nouveau concurrent identifie. Operateur approuve avant toute modification. Output via PushNotification. Jamais commite dans le repo.
 
 ### Daily comms-prep (weekdays, target 13h CET)
 
