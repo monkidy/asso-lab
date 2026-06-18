@@ -203,6 +203,8 @@ proposition de mise a jour pour validation operateur.
 | Aigentsphere | Control plane unifie: register agents, monitor, enforce policies, compliance reporting auto. $4M seed avril 2026. | Startup tres jeune, produit a prouver en prod. | "Aigentsphere gere le registre. ACE gere l'autorisation." | 2026-06-15 |
 | CodeIntegrity | Runtime security guardrails: controle des tool calls, acces aux systemes et donnees, preuves d'execution. $5M seed mai 2026 (Syn Ventures, Antler, Boost VC). 6 clients en pilot. SF-based. | Securite-first, pas gouvernance-first. Pas de politique declarative operateur, pas de fail-closed par defaut. | "CodeIntegrity filtre ce que l'agent peut faire. ACE decide qui a le droit de lui demander." | 2026-06-17 |
 | Microsoft Agent Governance Toolkit | Toolkit OSS MIT (avril 2026): moteur de politique YAML/OPA/Cedar, identite inter-agents, execution sandboxing, SRE pour agents, compliance EU AI Act/HIPAA/SOC2. 3 300+ etoiles, 467 forks. | Toolkit sans doctrine: fail-closed non par defaut, policies ecrites par les devs pas par l'operateur, aucune couche operateur-first. | "Microsoft fournit les outils. ACE est la doctrine qui dit ce qui est autorise avant que le premier outil soit installe." | 2026-06-17 |
+| Databricks Unity AI Gateway | Governance unifiee de tous les modeles, MCP, agents et skills via Unity Catalog. Spend caps, cost attribution par user/team/use case, audit trail end-to-end, monitoring, partner ecosystem. Annonce Data+AI Summit 2026. | Platform data-engineering-first. Policies configurees par des equipes tech pour des equipes tech. Aucun concept d'autorisation operateur avant action. Fail-closed non par defaut. Zero doctrine operateur-first. | "Databricks gouverne votre estate IA. ACE est la doctrine qui dit ce qui est autorise avant que le premier MCP soit appele." | 2026-06-18 |
+| Proofpoint | Agent Integrity Framework: 5 piliers (intent alignment, identity and attribution, behavioral consistency, auditability, operational transparency), modele de maturite 5 phases. Lance mars 2026 pre-RSAC. Cible enterprises avec copilots et agents autonomes. | Security-first, pas governance-first. Detection post-execution des comportements deviants. Aucun concept d'autorisation operateur avant action. Framework ecrit pour security officers, pas pour operateurs. | "Proofpoint verifie que votre agent se comporte bien. ACE decide ce qu'il a le droit de faire." | 2026-06-18 |
 
 ---
 
@@ -231,5 +233,5 @@ publications/index.md last updated 2026-06-03. Backlog = at minimum 6 unposted b
 
 ## Version
 
-Last updated: 2026-06-17
+Last updated: 2026-06-18
 Status: OPERATIONAL — brand-building phase, pipeline backlog flag active
