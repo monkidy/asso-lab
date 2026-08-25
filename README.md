@@ -2,7 +2,9 @@
 
 ![Receipt signed by code, 2026-05-27](assets/screenshots/receipt-2026-05-27.png)
 
-**Public observer surface for ACE agent governance.**
+**Bounded public observation surface derived from Asso.**
+
+Asso Lab is not Asso itself, and it is not Asso Capital Engine. It is a small public surface for inspecting one part of the work: bounded briefs, receipts, evidence, refusals and reviewable agent actions.
 
 New here? Start with [`START_HERE.md`](START_HERE.md). It explains Asso Lab in plain English.
 
@@ -20,7 +22,7 @@ Asso Lab gives a small public answer:
 
 ## What this repo is
 
-Asso Lab is a public proof surface for ACE.
+Asso Lab is a public proof surface derived from the broader Asso / SYSTASYS work.
 
 It demonstrates:
 
@@ -29,6 +31,8 @@ It demonstrates:
 - traceable sources, hashes, timestamps, and status fields;
 - public doctrine for fail-closed agent governance;
 - examples of allowed, refused, and human-review agent actions.
+
+The receipt/admissibility doctrine historically published under ACE remains useful here as a narrow governance layer. It is not the parent identity of Asso, SYSTASYS or Asso Capital Engine.
 
 ## Why this matters
 
@@ -69,7 +73,7 @@ This is the principle:
 
 Public artifacts demonstrate the doctrine through bounded documentation, receipts, examples, and audit trails.
 
-The full runtime remains private until its governance boundaries, safety envelopes, and operator controls are stable enough to expose without creating false authority claims.
+The full private systems remain private until their governance boundaries, safety envelopes, and operator controls are stable enough to expose without creating false authority claims.
 
 This public repo does not grant runtime authority, merge authority, trading authority, publishing authority, wallet authority, deployment authority, or permission-to-act.
 
@@ -92,7 +96,7 @@ Those claims require separate evidence.
 - [`START_HERE.md`](START_HERE.md) - plain English guide.
 - [`VISUAL_OVERVIEW.md`](VISUAL_OVERVIEW.md) - diagrams and one-screen tables.
 - [`STATUS.md`](STATUS.md) - current maturity and proof status.
-- [`ACE-Operating-Doctrine.md`](ACE-Operating-Doctrine.md) - public doctrine anchor.
+- [`ACE-Operating-Doctrine.md`](ACE-Operating-Doctrine.md) - public receipt/admissibility doctrine anchor.
 - [`publications/`](publications/) - public briefs.
 - [`receipts/`](receipts/) - evidence trails.
 - [`examples/action-receipts/`](examples/action-receipts/) - static examples of bounded agent actions.
@@ -104,15 +108,24 @@ Those claims require separate evidence.
 - [ACE Agent Governance Receipt Standard](https://github.com/monkidy/ace-agent-governance-receipt-standard): public receipt standard.
 - [AI Ops SOP Pack](https://github.com/monkidy/ai-ops-sop-pack): public SOPs for bounded handoffs and PR audit discipline.
 
-## ACE doctrine in one line
+## Where this sits
+
+- **Asso**: the longitudinal cognitive continuity system.
+- **SYSTASYS**: the wider architecture.
+- **Asso Capital Engine**: the operating economic layer.
+- **Asso Lab**: this bounded public observation surface.
+
+The deeper public map is at https://hichembenali.com/asso.
+
+## Governance doctrine in one line
 
 Closed by Default. Evidence First. Human Bounds. Receipts over claims.
 
-ACE governs admissibility. Asso executes only inside an explicit envelope.
+Knowledge is not authority. Proposed action stays inside explicit permission.
 
 ## Action receipt examples
 
-Asso Lab includes static [action receipt examples](examples/action-receipts/) showing how ACE represents bounded agent actions: allowed, refused, or requiring human review.
+Asso Lab includes static [action receipt examples](examples/action-receipts/) showing bounded agent actions: allowed, refused, or requiring human review.
 
 These examples are not runtime proof. They show the public shape of bounded agent governance.
 
