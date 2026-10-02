@@ -1,8 +1,18 @@
 # Asso Lab Changelog
 
-Public, dated build log of Asso Lab and the ACE public surface. Newest first.
+Public, dated build log of Asso Lab. Newest first.
 Receipts over claims: every entry is dated, and this repository's git history is
 the tamper-evident record. For action-level proof, see `proof-of-agent/`.
+
+## Public-surface realignment (2026-10-02)
+
+- Repositioned Asso Lab as a bounded public proof surface derived from Asso and the wider SYSTASYS work.
+- Marked June-era ACE identity, doctrine and visual material as historical provenance rather than current parent identity.
+- Removed the obsolete social publishing pipeline, scheduler, operator routines, local draft/log artifacts and stale environment example from the current branch.
+- Kept receipts, publications, examples, Proof of Agent material and public-safe doctrine available as inspectable evidence.
+- Replaced stale public operator instructions with a current public-repository boundary.
+- Updated README, START_HERE, STATUS and CONTRIBUTING so public proof is not confused with current private runtime truth.
+- Historical changelog entries below are preserved as dated facts. References to files removed from current `main` describe what existed at that time; the git history remains the provenance record.
 
 ## v0.5 (2026-06-09)
 - Reader-first public model pass.
@@ -35,4 +45,4 @@ the tamper-evident record. For action-level proof, see `proof-of-agent/`.
 - Asso Lab established as the public observer of ACE: weekday briefings generated with code-signed receipts (briefing orchestrator).
 
 ---
-This changelog grows as the project advances. One milestone per shipped step, dated, versioned.
+Historical entries are not current operating instructions. Current public status lives in `STATUS.md`.
