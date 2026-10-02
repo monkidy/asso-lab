@@ -105,7 +105,7 @@ Those claims require separate evidence.
 - **Asso**: the longitudinal cognitive interface and continuity layer.
 - **Asso Lab**: this bounded public proof surface.
 
-The deeper public map is at https://hichembenali.com/systasys and https://hichembenali.com/asso.
+The deeper public map is at https://hichembenali.com/en/systasys and https://hichembenali.com/en/asso.
 
 ## Governance doctrine in one line
 
