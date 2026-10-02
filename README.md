@@ -2,15 +2,17 @@
 
 ![Receipt signed by code, 2026-05-27](assets/screenshots/receipt-2026-05-27.png)
 
-**Bounded public observation surface derived from Asso.**
+**Bounded public proof surface derived from Asso and the wider SYSTASYS work.**
 
-Asso Lab is not Asso itself, and it is not Asso Capital Engine. It is a small public surface for inspecting one part of the work: bounded briefs, receipts, evidence, refusals and reviewable agent actions.
+Asso Lab is not Asso itself, and it is not the private SYSTASYS operating system. It is a small public surface for inspecting one part of the work: bounded briefs, receipts, evidence, refusals and reviewable agent actions.
+
+> **Public status, 2026-10-02:** this repository is a proof surface, not a mirror of current SYSTASYS operations. Some dated artifacts preserve the older ACE name for provenance. That historical label is not the parent identity of Asso or SYSTASYS.
 
 New here? Start with [`START_HERE.md`](START_HERE.md). It explains Asso Lab in plain English.
 
 Prefer diagrams and tables? Open [`VISUAL_OVERVIEW.md`](VISUAL_OVERVIEW.md).
 
-Current status: [`PUBLIC_OBSERVER_SURFACE_V0`](STATUS.md).
+Current status: [`PUBLIC_PROOF_SURFACE_V1`](STATUS.md).
 
 ## The simple question
 
@@ -22,9 +24,7 @@ Asso Lab gives a small public answer:
 
 ## What this repo is
 
-Asso Lab is a public proof surface derived from the broader Asso / SYSTASYS work.
-
-It demonstrates:
+Asso Lab demonstrates:
 
 - bounded briefs;
 - code-generated receipts;
@@ -32,13 +32,11 @@ It demonstrates:
 - public doctrine for fail-closed agent governance;
 - examples of allowed, refused, and human-review agent actions.
 
-The receipt/admissibility doctrine historically published under ACE remains useful here as a narrow governance layer. It is not the parent identity of Asso, SYSTASYS or Asso Capital Engine.
+The receipt/admissibility doctrine historically published under ACE remains useful here as a narrow governance layer. It is not the parent identity of Asso or SYSTASYS.
 
 ## Why this matters
 
-AI agents should not only answer.
-
-They should leave evidence.
+AI agents should not only answer. They should leave evidence.
 
 A claim like "done" is not enough. A reviewer should be able to inspect what happened, what did not happen, and what proof exists.
 
@@ -61,21 +59,13 @@ This is the principle:
 - developers who want inspectable handoff and receipt patterns;
 - non-technical visitors who need to understand what is public proof and what is not.
 
-## How it works
-
-1. Code reads declared sources.
-2. The AI proposes inside a bounded envelope.
-3. Code generates a receipt describing what happened.
-4. The receipt is stored as an audit trail.
-5. The result can be reviewed later.
-
 ## Public and private boundary
 
 Public artifacts demonstrate the doctrine through bounded documentation, receipts, examples, and audit trails.
 
-The full private systems remain private until their governance boundaries, safety envelopes, and operator controls are stable enough to expose without creating false authority claims.
+The current private systems remain private. This repository does not expose or claim to prove current SYSTASYS runtime state, infrastructure, broker or economic state, internal operator controls, credentials, or permission-to-act.
 
-This public repo does not grant runtime authority, merge authority, trading authority, publishing authority, wallet authority, deployment authority, or permission-to-act.
+The old social publishing pipeline that once lived in this repository is not a current public product and is not part of the current branch.
 
 ## What this repo does not prove
 
@@ -95,39 +85,33 @@ Those claims require separate evidence.
 
 - [`START_HERE.md`](START_HERE.md) - plain English guide.
 - [`VISUAL_OVERVIEW.md`](VISUAL_OVERVIEW.md) - diagrams and one-screen tables.
-- [`STATUS.md`](STATUS.md) - current maturity and proof status.
-- [`ACE-Operating-Doctrine.md`](ACE-Operating-Doctrine.md) - public receipt/admissibility doctrine anchor.
-- [`publications/`](publications/) - public briefs.
+- [`STATUS.md`](STATUS.md) - current public status and proof boundary.
+- [`ACE-Operating-Doctrine.md`](ACE-Operating-Doctrine.md) - historical receipt/admissibility doctrine anchor.
+- [`publications/`](publications/) - dated public briefs.
 - [`receipts/`](receipts/) - evidence trails.
 - [`examples/action-receipts/`](examples/action-receipts/) - static examples of bounded agent actions.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) - contribution rules for the public surface.
 - [`CHANGELOG.md`](CHANGELOG.md) - dated build log.
 
-## Related public repos
+## Related public work
 
-- [ACE Agent Governance Receipt Standard](https://github.com/monkidy/ace-agent-governance-receipt-standard): public receipt standard.
-- [AI Ops SOP Pack](https://github.com/monkidy/ai-ops-sop-pack): public SOPs for bounded handoffs and PR audit discipline.
+- [ACE Receipts](https://github.com/monkidy/ace-receipts): deterministic receipt and gate tool.
+- [AI Ops SOP Pack](https://github.com/monkidy/ai-ops-sop-pack): published SOP pack for bounded handoffs and review.
+- [ACE Agent Governance Receipt Standard](https://github.com/monkidy/ace-agent-governance-receipt-standard): early historical receipt standard kept public for provenance.
 
 ## Where this sits
 
-- **Asso**: the longitudinal cognitive continuity system.
 - **SYSTASYS**: the wider architecture.
-- **Asso Capital Engine**: the operating economic layer.
-- **Asso Lab**: this bounded public observation surface.
+- **Asso**: the longitudinal cognitive interface and continuity layer.
+- **Asso Lab**: this bounded public proof surface.
 
-The deeper public map is at https://hichembenali.com/asso.
+The deeper public map is at https://hichembenali.com/systasys and https://hichembenali.com/asso.
 
 ## Governance doctrine in one line
 
 Closed by Default. Evidence First. Human Bounds. Receipts over claims.
 
 Knowledge is not authority. Proposed action stays inside explicit permission.
-
-## Action receipt examples
-
-Asso Lab includes static [action receipt examples](examples/action-receipts/) showing bounded agent actions: allowed, refused, or requiring human review.
-
-These examples are not runtime proof. They show the public shape of bounded agent governance.
 
 ## License
 
