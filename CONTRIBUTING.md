@@ -1,8 +1,8 @@
 # Contributing
 
-Asso Lab is a public observer surface for ACE.
+Asso Lab is a bounded public proof surface derived from the broader Asso / SYSTASYS work.
 
-Contributions should keep the repo clear, bounded, and evidence-first.
+Contributions should keep the repository clear, bounded and evidence-first.
 
 ## Principles
 
@@ -13,50 +13,37 @@ Contributions should keep the repo clear, bounded, and evidence-first.
 
 2. **Receipts over claims**
    - Do not add claims that the repo cannot prove.
-   - Prefer evidence, receipts, hashes, source lists, screenshots, or validation steps.
+   - Prefer evidence, receipts, hashes, source lists, screenshots or validation steps.
 
 3. **Public/private boundary**
    - Do not expose private runtime details.
-   - Do not add secrets, credentials, tokens, private logs, or private operator state.
+   - Do not add secrets, credentials, tokens, private logs, personal calibration or private operator state.
    - Do not imply this public repo grants runtime authority.
 
-4. **Fail closed**
-   - If an action is unclear, sensitive, or outside the public envelope, document rather than execute.
-   - Public examples should make denied or not-authorized actions explicit.
+4. **Historical naming stays historical**
+   - ACE appears in dated material because it is part of the repository's provenance.
+   - Do not present ACE as the current parent identity of Asso or SYSTASYS.
+   - Do not silently rewrite historical artifacts only to make them look current.
 
 5. **Keep the surface small**
-   - Avoid turning this repo into the full runtime.
+   - Do not reintroduce a live social publishing pipeline, scheduler or private operations mirror here.
    - Keep examples and docs inspectable.
    - Add the smallest useful validation or explanation.
 
 ## Good contributions
 
-Good contributions include:
-
-- clearer README, START_HERE, or visual explanations;
-- better public receipt examples;
-- improved source and hash documentation;
-- safer boundary language;
-- small validation scripts;
-- corrections that reduce ambiguity.
+Good contributions include clearer public explanations, better receipt examples, stronger proof boundaries, safer wording and corrections that reduce ambiguity.
 
 ## Avoid
 
-Avoid:
-
-- marketing claims;
-- production-readiness claims without proof;
-- live execution claims without receipts;
-- exposing private runtime details;
-- adding dependencies without a strong reason;
-- claims that ACE, Asso, or any agent has authority outside explicit envelopes.
+Avoid marketing claims, production-readiness claims without proof, live execution claims without receipts, exposing private runtime details, stale operator instructions, and claims that any agent has authority outside explicit envelopes.
 
 ## Final check
 
 Before adding a change, ask:
 
 ```text
-Does this make the public proof surface clearer, safer, or easier to inspect?
+Does this make the public proof surface clearer, safer or easier to inspect?
 ```
 
 If not, do not add it.
