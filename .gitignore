@@ -1,15 +1,14 @@
 .env
-.env.x
+.env.*
 secrets/
+vault/
 __pycache__/
 *.pyc
-logs/*
-# Keep the orchestrator log tracked: in the cloud it is the ONLY place the
-# dead-man timestamp (last_human_interaction) and the per-day generation
-# record persist between workflow runs.
-!logs/.orchestrator_log.json
+
+# Keep generated local state and private operator material out of this public repository.
+logs/
+drafts/
+
+# Publications are admitted deliberately. Do not auto-add generated drafts.
 publications/*
 !publications/.gitkeep
-
-# Internal inter-zone notes, never public
-vault/
